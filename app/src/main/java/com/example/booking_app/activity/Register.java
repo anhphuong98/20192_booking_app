@@ -32,6 +32,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Register.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.enter, R.anim.out);
             }
         });
         regis2.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +40,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Register.this, Login.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.enter, R.anim.out);
             }
         });
     }

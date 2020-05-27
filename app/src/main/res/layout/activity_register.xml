@@ -21,12 +21,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bookia" />
 
+    <TextView
+        android:id="@+id/registertxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginRight="180dp"
+        android:text="REGISTER"
+        android:textColor="#494949"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
     <EditText
         android:id="@+id/edtmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:background="@drawable/inputstyle"
@@ -36,8 +54,9 @@
         android:padding="10dp"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/registertxt" />
 
     <EditText
         android:id="@+id/edtname"
@@ -45,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:background="@drawable/inputstyle"
@@ -55,17 +74,17 @@
         android:padding="10dp"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtmail" />
 
     <EditText
-        android:id="@+id/edtpass"
+        android:id="@+id/edtpassregister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:background="@drawable/inputstyle"
@@ -75,6 +94,7 @@
         android:padding="10dp"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtname" />
 
@@ -84,16 +104,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginLeft="112dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="112dp"
         android:layout_marginRight="112dp"
         android:background="@drawable/buttonstyle"
         android:text="Sign up"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtpass" />
+        app:layout_constraintTop_toBottomOf="@+id/edtpassregister" />
 
     <TextView
         android:id="@+id/regis2"

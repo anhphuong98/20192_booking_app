@@ -12,6 +12,7 @@ public interface SOService {
     @FormUrlEncoded
     Call<UserResponse> logIn(@Field("email") String email, @Field("password") String password);
 
-//    @POST("user/register")
-//    Call<UserResponse> register(@Field())
+    @POST("user/register")
+    @FormUrlEncoded
+    Call<UserResponse> register(@Field("email") String email, @Field("name") String name, @Field("password") String password);
 }

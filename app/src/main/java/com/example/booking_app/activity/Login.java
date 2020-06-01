@@ -57,8 +57,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 login();
                 break;
             case R.id.login2:
-//                Intent intent = new Intent(Login.this, Register.class);
-//                startActivity(intent);
+                Intent intent = new Intent(Login.this, Register.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -102,8 +102,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    private Boolean validate(){
-        Boolean result = false;
+    private boolean validate(){
+        boolean result = false;
         String email = mail.getText().toString();
         String password = pass.getText().toString();
 

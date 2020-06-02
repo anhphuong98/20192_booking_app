@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_margin="1dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="#ffffff"
+    >
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/cart_dish_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Chân gà nướng"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cart_dish_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:text="120000đ"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/cart_dish_image"
+        android:layout_marginLeft="2dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/avatar" />
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/cart_dish_sub"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/sub_icon" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/cart_dish_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="1" />
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/cart_dish_plus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/plus_icon" />
+
+</LinearLayout>

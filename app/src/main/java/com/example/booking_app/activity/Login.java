@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 @Override
                 public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                     UserResponse userResponse = response.body();
-                    Log.d("loginres", userResponse.toString());
+//                    Log.d("loginres", "This is login " + userResponse.toString());
                     if(userResponse.getSuccess()){
                         pg.setVisibility(View.INVISIBLE);
                         Intent intent = new Intent(Login.this, Storedetail.class);

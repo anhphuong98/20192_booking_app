@@ -11,12 +11,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-        public static final String BASE_URL ="http://192.168.0.104:8080/api/";
-//    public static final String BASE_URL ="http://localhost:8080/api/";
-    //public static final String BASE_URL ="http://192.168.43.200:3000/api/";
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient() {
+    public static Retrofit getClient(String url) {
         if (retrofit==null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -31,7 +28,7 @@ public class RetrofitClient {
                     .create();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(url)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

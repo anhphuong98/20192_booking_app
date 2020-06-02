@@ -14,17 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Noactionbar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailUserInfo"></activity>
-        <activity android:name=".activity.Storedetail" />
-        <activity android:name=".activity.Login" />
-        <activity android:name=".activity.Register" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.DetailCart"></activity>
+        <activity android:name=".activity.CartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.UserInfo" />
+        <activity android:name=".activity.DetailUserInfo" />
+        <activity android:name=".activity.Storedetail" />
+        <activity android:name=".activity.Login" />
+        <activity android:name=".activity.Register" />
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>

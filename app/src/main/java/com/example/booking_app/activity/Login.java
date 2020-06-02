@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booking_app.R;
+import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.RetrofitClient;
 import com.example.booking_app.connection.SOService;
 import com.example.booking_app.models.user.UserResponse;
@@ -36,7 +37,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_login);
 
         init();
-        mSOService = RetrofitClient.getClient().create(SOService.class);
+        mSOService = APIUtils.getSOService();
         login.setOnClickListener(this);
 
         txt2.setOnClickListener(this);

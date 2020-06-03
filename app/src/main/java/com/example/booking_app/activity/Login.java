@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booking_app.R;
 import com.example.booking_app.connection.APIUtils;
-import com.example.booking_app.connection.RetrofitClient;
 import com.example.booking_app.connection.SOService;
 import com.example.booking_app.models.user.UserResponse;
 
@@ -92,6 +91,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         editor.putString("token", "Bearer "+ userResponse.getToken());
                         String idUser = String.valueOf(userResponse.getData().getId());
                         editor.putString("id", idUser);
+                        editor.putString("avatar", userResponse.getData().getUrl());
+                        editor.putString("email", userResponse.getData().getEmail());
+                        editor.putString("address", userResponse.getData().getAddress());
+                        editor.putString("phoneNumber", userResponse.getData().getPhone());
+                        editor.putString("name", userResponse.getData().getName());
                         editor.commit();
 
                         finish();

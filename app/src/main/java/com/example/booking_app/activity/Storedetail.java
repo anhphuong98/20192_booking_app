@@ -1,6 +1,7 @@
 package com.example.booking_app.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,11 +16,12 @@ import com.example.booking_app.models.dish.StoreDish;
 import java.util.ArrayList;
 
 public class Storedetail extends AppCompatActivity {
-    ImageView storeimg;
+    ImageView storeimg, additem;
     TextView stname, steva, stopcltime, staddress, stphone;
     RecyclerView listdish;
     StoreDishAdapter storeDishAdapter;
     private ArrayList<StoreDish> stdish;
+    private int quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,12 @@ public class Storedetail extends AppCompatActivity {
         storeDishAdapter = new StoreDishAdapter(this, stdish);
         listdish.setAdapter(storeDishAdapter);
 
+        additem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
     public void init(){
@@ -42,6 +50,7 @@ public class Storedetail extends AppCompatActivity {
         stname = (TextView) findViewById(R.id.stname);
         steva = (TextView) findViewById(R.id.evaluation);
         stopcltime = (TextView) findViewById(R.id.opcltime);
+        additem = (ImageView) findViewById(R.id.additem);
         staddress = (TextView) findViewById(R.id.staddress);
         stphone = (TextView) findViewById(R.id.stphone);
         listdish = (RecyclerView) findViewById(R.id.listitem);

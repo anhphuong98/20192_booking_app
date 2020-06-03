@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     UserResponse userResponse = response.body();
 //                    Log.d("loginres", "This is login " + userResponse.toString());
                     if(userResponse.getSuccess()){
-                        Intent intent = new Intent(Login.this, Storedetail.class);
+                        Intent intent = new Intent(Login.this, UserInfo.class);
                         startActivity(intent);
 
                         SharedPreferences token = Login.this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
@@ -86,6 +86,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         editor.putString("token", "Bearer "+ userResponse.getToken());
                         String idUser = String.valueOf(userResponse.getData().getId());
                         editor.putString("id", idUser);
+                        editor.putString("avatar", userResponse.getData().getUrl());
+                        editor.putString("email", userResponse.getData().getEmail());
+                        editor.putString("address", userResponse.getData().getAddress());
+                        editor.putString("phoneNumber", userResponse.getData().getPhone());
+                        editor.putString("name", userResponse.getData().getName());
                         editor.commit();
 
                         finish();

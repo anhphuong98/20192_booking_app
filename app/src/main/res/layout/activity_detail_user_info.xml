@@ -57,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <ImageView
-                android:id="@+id/avatarUser"
+                android:id="@+id/detail_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/avatar" />
@@ -96,7 +96,7 @@
             android:textColor="#000000"
             android:textSize="20sp" />
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/detail_name"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
@@ -128,7 +128,7 @@
             android:gravity="center_vertical"
             android:text="Email:" />
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/detail_email"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
@@ -159,7 +159,7 @@
             android:gravity="center_vertical"
             android:text="Địa chỉ:" />
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/detail_address"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
@@ -190,7 +190,7 @@
             android:gravity="center_vertical"
             android:text="Số điện thoại:" />
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/detail_phone"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
@@ -221,7 +221,7 @@
             android:gravity="center_vertical"
             android:text="Mật khẩu:" />
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/change_pass"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"

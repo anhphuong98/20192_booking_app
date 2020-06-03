@@ -12,10 +12,10 @@ public class DataUser {
     @SerializedName("password")
     private String password;
     @SerializedName("phone")
-    private int phone;
+    private String phone;
     @SerializedName("address")
     private String address;
-    @SerializedName("url")
+    @SerializedName("url_image")
     private String url;
 
     public DataUser(){}
@@ -36,9 +36,9 @@ public class DataUser {
 
     public void setPassword(String password) { this.password = password; }
 
-    public int getPhone() { return phone; }
+    public String getPhone() { return phone; }
 
-    public void setPhone(int phone) { this.phone = phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public String getAddress() { return address; }
 

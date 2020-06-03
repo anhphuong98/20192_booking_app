@@ -83,12 +83,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     UserResponse userResponse = response.body();
 //                    Log.d("loginres", "This is login " + userResponse.toString());
                     if(userResponse.getSuccess()){
-<<<<<<< HEAD
-                        Intent intent = new Intent(Login.this, UserInfo.class);
-=======
                         pg.setVisibility(View.INVISIBLE);
                         Intent intent = new Intent(Login.this, Storedetail.class);
->>>>>>> 2f640dbc268abfc56a845093c6ecc4fe8ea04cb5
                         startActivity(intent);
 
                         SharedPreferences token = Login.this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);

@@ -1,14 +1,13 @@
 package com.example.booking_app.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
 import com.example.booking_app.adapter.CartAdapter;
@@ -64,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
 
     public void addItem() {
         listCartDish = new ArrayList<CartDish>();
-        listCartDish.add(new CartDish("Trà sửa", "13000đ", 2, R.drawable.tradao));
+        listCartDish.add(new CartDish("Trà sữa", "13000đ", 2, R.drawable.tradao));
         listCartDish.add(new CartDish("Trà đào", "14000đ", 2, R.drawable.trasua));
         listCartDish.add(new CartDish("Thịt xiên", "15000đ", 2, R.drawable.thitnuong));
     }

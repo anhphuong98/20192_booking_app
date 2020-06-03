@@ -1,4 +1,4 @@
-package com.example.booking_app.models.order;
+package com.example.booking_app.models.dish;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -28,7 +28,7 @@ import com.google.gson.annotations.SerializedName;
 //         name: {
 //         type: DataTypes.STRING,
 //         allowNull: false
-public class Dish {
+public class StoreDish {
     @SerializedName("id")
     int id;
     @SerializedName("store_id")
@@ -36,17 +36,17 @@ public class Dish {
     @SerializedName("category_id")
     int category_id;
     @SerializedName("url_image")
-    String url_image;
+    int url_image;
     @SerializedName("price")
-    double price;
+    String price;
     @SerializedName("sale")
-    double sale;
+    int sale;
     @SerializedName("name")
     String name;
 
-    public Dish(){}
+    public StoreDish(){}
 
-    public Dish(int id, int store_id, int category_id, String url_image, double price, double sale, String name) {
+    public StoreDish(int id, int store_id, int category_id, int url_image, String price, int sale, String name) {
         this.id = id;
         this.store_id = store_id;
         this.category_id = category_id;
@@ -68,17 +68,17 @@ public class Dish {
 
     public void setCategory_id(int category_id) { this.category_id = category_id;  }
 
-    public String getUrl_image() { return url_image;  }
+    public int getUrl_image() { return url_image;  }
 
-    public void setUrl_image(String url_image) {this.url_image = url_image; }
+    public void setUrl_image(int url_image) {this.url_image = url_image; }
 
-    public double getPrice() {  return price;}
+    public String getPrice() {  return price;}
 
-    public void setPrice(double price) {this.price = price; }
+    public void setPrice(String price) {this.price = price; }
 
-    public double getSale() { return sale; }
+    public int getSale() { return sale; }
 
-    public void setSale(double sale) {this.sale = sale; }
+    public void setSale(int sale) {this.sale = sale; }
 
     public String getName() {return name; }
 

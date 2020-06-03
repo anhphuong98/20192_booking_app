@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Booking_App.iml" filepath="$PROJECT_DIR$/Booking_App.iml" group="Booking_App" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Booking_App/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/booking_app.iml" filepath="$PROJECT_DIR$/.idea/booking_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/booking_app-app.iml" filepath="$PROJECT_DIR$/app/booking_app-app.iml" group="Booking_App/app" />
     </modules>
   </component>
 </project>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     TextView txt1, txt2;
     Button login;
     SOService mSOService;
+    ProgressBar pg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +51,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         txt1 = (TextView) findViewById(R.id.login1);
         txt2 = (TextView) findViewById(R.id.login2);
         login = (Button) findViewById(R.id.login);
+        pg = (ProgressBar) findViewById(R.id.loadlogin);
+        pg.setVisibility(View.INVISIBLE);
     }
 
 
     public void onClick(View v){
+        pg.setVisibility(View.VISIBLE);
         switch (v.getId()){
             case R.id.login:
                 login();
@@ -78,7 +83,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     UserResponse userResponse = response.body();
 //                    Log.d("loginres", "This is login " + userResponse.toString());
                     if(userResponse.getSuccess()){
+<<<<<<< HEAD
                         Intent intent = new Intent(Login.this, UserInfo.class);
+=======
+                        pg.setVisibility(View.INVISIBLE);
+                        Intent intent = new Intent(Login.this, Storedetail.class);
+>>>>>>> 2f640dbc268abfc56a845093c6ecc4fe8ea04cb5
                         startActivity(intent);
 
                         SharedPreferences token = Login.this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
@@ -95,12 +105,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
                         finish();
                     } else {
+                        pg.setVisibility(View.INVISIBLE);
                         Toast.makeText(Login.this, "Email or password is not valid", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<UserResponse> call, Throwable t) {
+                    pg.setVisibility(View.INVISIBLE);
                     Toast.makeText(Login.this, "Please check your network condition", Toast.LENGTH_SHORT).show();
 
                 }
@@ -114,6 +126,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         String password = pass.getText().toString();
 
         if(email.isEmpty() || password.isEmpty()){
+            pg.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         } else {
             result = true;

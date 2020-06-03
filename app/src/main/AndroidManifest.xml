@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Noactionbar"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".activity.DetailCart"></activity>
         <activity android:name=".activity.CartActivity">
         </activity>
         <activity android:name=".activity.HomeActivity">
+=======
+        <activity android:name=".activity.DetailCart" />
+        <activity android:name=".activity.Storedetail">
+>>>>>>> 2f640dbc268abfc56a845093c6ecc4fe8ea04cb5
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,11 +31,15 @@
         </activity>
         <activity android:name=".activity.UserInfo" />
         <activity android:name=".activity.DetailUserInfo" />
-        <activity android:name=".activity.Storedetail" />
+        <activity android:name=".activity.CartActivity" />
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.Register" />
+<<<<<<< HEAD
         <activity android:name=".activity.MainActivity">
         </activity>
+=======
+        <activity android:name=".activity.MainActivity" />
+>>>>>>> 2f640dbc268abfc56a845093c6ecc4fe8ea04cb5
     </application>
 
 </manifest>

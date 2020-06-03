@@ -1,13 +1,13 @@
 package com.example.booking_app.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booking_app.R;
 import com.squareup.picasso.Picasso;
@@ -36,6 +36,6 @@ public class UserInfo extends AppCompatActivity {
         String name = sharedPreferences.getString("name", "");
         String url = sharedPreferences.getString("avatar", "");
         nameUser.setText(name);
-        Picasso.get().load(url).into(avatarUser);
+        Picasso.with(UserInfo.this).load(url).into(avatarUser);
     }
 }

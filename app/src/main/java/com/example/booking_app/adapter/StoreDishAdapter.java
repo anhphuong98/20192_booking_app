@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
 import com.example.booking_app.models.dish.StoreDish;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,9 +45,11 @@ public class StoreDishAdapter extends RecyclerView.Adapter<StoreDishAdapter.Stor
 
     @Override
     public void onBindViewHolder(@NonNull Storedishholder storedishholder, int position) {
-            storedishholder.dishname.setText(storeDishes.get(position).getName());
-            storedishholder.dishimg.setImageResource(storeDishes.get(position).getUrl_image());
-            storedishholder.dishprice.setText(storeDishes.get(position).getPrice());
+            StoreDish storeDish = storeDishes.get(position);
+            storedishholder.dishname.setText(storeDish.getName());
+            Picasso.with(context).load(storeDish.getUrlImage()).into(storedishholder.dishimg);
+            //storedishholder.dishimg.setImageResource(storeDishes.get(position).getUrl_image());
+            storedishholder.dishprice.setText(storeDish.getPrice().toString());
     }
 
     @Override

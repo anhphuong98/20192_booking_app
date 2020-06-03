@@ -8,4 +8,5 @@ import retrofit2.http.GET;
 public interface StoreService {
     @GET("store")
     Call<StoreResponse> getAllStore();
+
 }

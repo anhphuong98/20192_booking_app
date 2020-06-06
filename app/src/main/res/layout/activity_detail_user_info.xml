@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/backUser"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
@@ -28,10 +28,13 @@
 
         <TextView
             android:id="@+id/textView21"
+            android:textColor="#000000"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="19"
-            android:text="TextView" />
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="Thông tin người dùng" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,6 +108,13 @@
             android:text="Nguyễn Anh Phương"
             android:gravity="center_vertical"
             />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:id="@+id/changeName"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/next" />
     </LinearLayout>
 
     <LinearLayout
@@ -136,6 +146,7 @@
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:text="phuonga1k51@gmail.com" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -167,6 +178,13 @@
             android:textSize="20sp"
             android:gravity="center_vertical"
             android:text="Yên Phong - Bắc Ninh" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:id="@+id/changeAddress"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/next" />
     </LinearLayout>
 
     <LinearLayout
@@ -198,6 +216,13 @@
             android:textSize="20sp"
             android:gravity="center_vertical"
             android:text="+ 84337479966" />
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:id="@+id/changePhone"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/next" />
     </LinearLayout>
 
     <LinearLayout
@@ -221,14 +246,15 @@
             android:gravity="center_vertical"
             android:text="Mật khẩu:" />
         <TextView
-            android:id="@+id/change_pass"
+            android:id="@+id/changePass"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
-            android:textColor="#000000"
             android:gravity="center_vertical"
             android:textSize="20sp"
-            android:text="Đổi mật khẩu" />
+            android:textColor="#2A6BD7"
+            android:textStyle=""
+            android:text="@string/change_pass_string" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

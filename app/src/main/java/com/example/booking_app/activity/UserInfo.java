@@ -38,4 +38,12 @@ public class UserInfo extends AppCompatActivity {
         nameUser.setText(name);
         Picasso.get().load(url).into(avatarUser);
     }
+
+    @Override
+    protected void onResume() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
+        String u_name = sharedPreferences.getString("name", "");
+        nameUser.setText(u_name);
+        super.onResume();
+    }
 }

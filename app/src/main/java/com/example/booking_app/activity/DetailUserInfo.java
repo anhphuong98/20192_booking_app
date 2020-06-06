@@ -1,7 +1,5 @@
 package com.example.booking_app.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booking_app.R;
 import com.example.booking_app.activity.changeUserInfo.ChangeAddress;
@@ -83,7 +83,7 @@ public class DetailUserInfo extends AppCompatActivity {
     public void addData() {
         sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
         String url_image = sharedPreferences.getString("avatar", "");
-        Picasso.get().load(url_image).into(avatar);
+        Picasso.with(DetailUserInfo.this).load(url_image).into(avatar);
         String u_name = sharedPreferences.getString("name", "");
         name.setText(u_name);
         String u_email = sharedPreferences.getString("email", "");

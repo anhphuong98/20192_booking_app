@@ -1,5 +1,6 @@
 package com.example.booking_app.models.dish;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 // id: {
@@ -30,57 +31,92 @@ import com.google.gson.annotations.SerializedName;
 //         allowNull: false
 public class StoreDish {
     @SerializedName("id")
-    int id;
+    @Expose
+    private Integer id;
     @SerializedName("store_id")
-    int store_id;
+    @Expose
+    private Integer storeId;
     @SerializedName("category_id")
-    int category_id;
+    @Expose
+    private Integer categoryId;
     @SerializedName("url_image")
-    int url_image;
+    @Expose
+    private String urlImage;
     @SerializedName("price")
-    String price;
+    @Expose
+    private Double price;
     @SerializedName("sale")
-    int sale;
+    @Expose
+    private Integer sale;
     @SerializedName("name")
-    String name;
+    @Expose
+    private String name;
 
     public StoreDish(){}
 
-    public StoreDish(int id, int store_id, int category_id, int url_image, String price, int sale, String name) {
+    public StoreDish(Integer id, Integer storeId, Integer categoryId, String urlImage, Double price, Integer sale, String name) {
         this.id = id;
-        this.store_id = store_id;
-        this.category_id = category_id;
-        this.url_image = url_image;
+        this.storeId = storeId;
+        this.categoryId = categoryId;
+        this.urlImage = urlImage;
         this.price = price;
         this.sale = sale;
         this.name = name;
     }
 
-    public int getId() {return id;}
+    public Integer getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    public int getStore_id() {return store_id;}
+    public Integer getStoreId() {
+        return storeId;
+    }
 
-    public void setStore_id(int store_id) {this.store_id = store_id;}
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
+    }
 
-    public int getCategory_id() {return category_id; }
+    public Integer getCategoryId() {
+        return categoryId;
+    }
 
-    public void setCategory_id(int category_id) { this.category_id = category_id;  }
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
-    public int getUrl_image() { return url_image;  }
+    public String getUrlImage() {
+        return urlImage;
+    }
 
-    public void setUrl_image(int url_image) {this.url_image = url_image; }
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 
-    public String getPrice() {  return price;}
+    public Double getPrice() {
+        return price;
+    }
 
-    public void setPrice(String price) {this.price = price; }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-    public int getSale() { return sale; }
+    public Integer getSale() {
+        return sale;
+    }
 
-    public void setSale(int sale) {this.sale = sale; }
+    public void setSale(Integer sale) {
+        this.sale = sale;
+    }
 
-    public String getName() {return name; }
+    public String getName() {
+        return name;
+    }
 
-    public void setName(String name) {this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 }

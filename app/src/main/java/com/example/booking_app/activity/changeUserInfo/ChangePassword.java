@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -30,6 +31,7 @@ public class ChangePassword extends AppCompatActivity {
     EditText password2;
     EditText password3;
     Button updatePassword;
+    ImageView backPassword;
 
     SOService soService;
 
@@ -63,6 +65,13 @@ public class ChangePassword extends AppCompatActivity {
             }
         });
 
+        backPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
     }
 
     public void addId() {
@@ -71,6 +80,7 @@ public class ChangePassword extends AppCompatActivity {
         password3 = (EditText) findViewById(R.id.editPassword3);
         updatePassword = (Button) findViewById(R.id.updatePassword);
         sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
+        backPassword = (ImageView) findViewById(R.id.backPassword);
     }
 
     public boolean checkBlankPassword() {

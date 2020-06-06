@@ -14,8 +14,6 @@ import com.example.booking_app.R;
 import com.example.booking_app.models.store.DataStore;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder> {
@@ -43,7 +41,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder>
         DataStore store = listStore.get(position);
         holder.nameStore.setText(store.getName());
         holder.addressStore.setText(store.getAddress());
-        Picasso.get().load(store.getUrlImage()).into(holder.imageStore);
+        Picasso.with(context).load(store.getUrlImage()).into(holder.imageStore);
 
     }
 

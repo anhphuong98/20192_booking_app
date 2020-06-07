@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 //                        pg.setVisibility(View.INVISIBLE);
 //                        Intent intent = new Intent(Login.this, Storedetail.class);
 //                        startActivity(intent);
-                        Intent intent = new Intent(Login.this, UserInfo.class);
+                        Intent intent = new Intent(Login.this, HomeActivity.class);
                         startActivity(intent);
 
                         SharedPreferences token = Login.this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);

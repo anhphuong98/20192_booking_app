@@ -4,7 +4,7 @@ public class APIUtils {
     private APIUtils() {
 
     }
-    public static String API_URL = "http://192.168.1.124:8080/api/";
+    public static String API_URL = "http://192.168.43.111:8080/api/";
 
     public static SOService getSOService() {
         return RetrofitClient.getClient(API_URL).create(SOService.class);

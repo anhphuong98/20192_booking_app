@@ -8,52 +8,18 @@
     android:theme="@style/SearchView"
     tools:context=".activity.HomeActivity">
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
+        android:id="@+id/frameContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"/>
-
-    <LinearLayout
-        android:id="@+id/LinearFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/layoutMenu"
+        app:layout_constraintBottom_toTopOf="@+id/layoutMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:orientation="vertical">
-        <SearchView
-            android:id="@+id/search"
-            android:background="#F1f2f3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:queryHint="Tìm kiếm"
-            >
-        </SearchView>
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ViewFlipper
-            android:id="@+id/viewflipper"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"></ViewFlipper>
+    </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listStore"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginTop="10dp" />
-
-
-        </LinearLayout>
-    </LinearLayout>
-    <!--</androidx.drawerlayout.widget.DrawerLayout>-->
     <LinearLayout
         android:id="@+id/layoutMenu"
         android:layout_width="match_parent"
@@ -65,6 +31,7 @@
         android:weightSum="3"
         >
         <LinearLayout
+            android:onClick="AddFragment"
             android:id="@+id/linearMenuHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -91,6 +58,7 @@
 
 
         <LinearLayout
+            android:onClick="AddFragment"
             android:id="@+id/linearMenuHistoryOrder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -114,6 +82,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:onClick="AddFragment"
             android:id="@+id/linearMenuProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -135,9 +104,9 @@
                 android:text="Cá nhân"
                 android:textColor="@color/colorBlack"/>
         </LinearLayout>
-
-
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

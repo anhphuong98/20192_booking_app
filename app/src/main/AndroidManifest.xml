@@ -21,6 +21,12 @@
         <activity android:name=".activity.DetailCart" />
         <activity android:name=".activity.CartActivity" />
         <activity android:name=".activity.HomeActivity" >
+<<<<<<< HEAD
+=======
+        </activity>
+        <activity android:name=".activity.DetailUserInfo" />
+        <activity android:name=".activity.Login">
+>>>>>>> 0cc65bcd6a7c4c5c7d51deb1b99057d4df5c7076
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

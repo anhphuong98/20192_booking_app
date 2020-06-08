@@ -326,27 +326,31 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
             <ImageView
-                android:id="@+id/imagex3"
-                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/imagex11"
+                android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/application" />
 
             <TextView
-                android:id="@+id/text4"
-                android:layout_width="64dp"
+                android:id="@+id/textvl"
+                android:layout_width="209dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:text="Ứng dụng cho chủ quán"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/image5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/next" />
+            android:layout_marginRight="5dp"
+            android:id="@+id/imagecc"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/next" />
         </LinearLayout>
 
         <LinearLayout
@@ -358,7 +362,7 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
             <TextView
                 android:gravity="center_vertical"
@@ -368,11 +372,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="6"
                 android:text="Đăng xuất"
-                android:textAlignment="center"
                 android:textColor="#f00"
                 android:textSize="20sp" />
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

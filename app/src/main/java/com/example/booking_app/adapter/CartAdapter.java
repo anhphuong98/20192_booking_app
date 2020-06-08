@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
 import com.example.booking_app.models.dish.CartDish;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,8 +52,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         holder.cart_dish_name.setText(listCartDish.get(position).getName());
-        holder.cart_dish_price.setText(listCartDish.get(position).getPrice());
-        holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
+        holder.cart_dish_price.setText(listCartDish.get(position).getPrice().toString());
+        Picasso.with(context).load(listCartDish.get(position).getImage()).into(holder.cart_dish_image);
+       // holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
         holder.cart_dish_quantity.setText(String.valueOf(listCartDish.get(position).getQuantity()));
     }
 

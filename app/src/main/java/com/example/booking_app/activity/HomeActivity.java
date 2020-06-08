@@ -1,11 +1,14 @@
 package com.example.booking_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,7 @@ import com.example.booking_app.models.store.DataStore;
 import com.example.booking_app.models.store.StoreResponse;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -33,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     LinearLayout linearMenuHome, linearMenuHistoryOrder, linearMenuProfile;
     TextView txtMenuHome,txtMenuHistoryOrder,txtMenuProfile;
-    ArrayList<DataStore> listDataStore = new ArrayList<DataStore>();
+    ArrayList<DataStore> listStore = new ArrayList<DataStore>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,12 +87,22 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<StoreResponse> call, Response<StoreResponse> response) {
                 if(response.isSuccessful()){
-                    listDataStore = response.body().getRows();
+                    listStore = response.body().getRows();
                     recyclerView.setHasFixedSize(true);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL , false);
                     recyclerView.setLayoutManager(layoutManager);
-                    StoreAdapter storeAdapter = new StoreAdapter(getApplicationContext(), listDataStore);
+                    StoreAdapter storeAdapter = new StoreAdapter(getApplicationContext(), listStore);
                     recyclerView.setAdapter(storeAdapter);
+                    storeAdapter.setOnStoreListener(new StoreAdapter.OnStoreListener() {
+                        @Override
+                        public void onStoreClick(int position) {
+                            Intent intent = new Intent(HomeActivity.this,Storedetail.class);
+                            intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
+//                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+
+                        }
+                    });
                 }
             }
 
@@ -98,5 +112,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
 }

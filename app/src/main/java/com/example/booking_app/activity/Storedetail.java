@@ -1,5 +1,6 @@
 package com.example.booking_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -15,14 +16,16 @@ import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.DishService;
 import com.example.booking_app.models.dish.StoreDish;
 import com.example.booking_app.models.dish.StoreDishResponse;
+import com.example.booking_app.models.store.DataStore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Storedetail extends AppCompatActivity {
+public class Storedetail extends AppCompatActivity  {
     ImageView storeimg, additem;
     DishService dishService;
     TextView stname, steva, stopcltime, staddress, stphone;
@@ -62,7 +65,8 @@ public class Storedetail extends AppCompatActivity {
     }
 
     public void getData(){
-        Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(1);
+        DataStore store = (DataStore) getIntent().getSerializableExtra("StoreDetail");
+        Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(store.getId());
         storeDishResponseCall.enqueue(new Callback<StoreDishResponse>() {
             @Override
             public void onResponse(Call<StoreDishResponse> call, Response<StoreDishResponse> response) {

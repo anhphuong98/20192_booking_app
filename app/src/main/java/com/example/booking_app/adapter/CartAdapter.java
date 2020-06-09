@@ -11,25 +11,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
+import com.example.booking_app.activity.ChangeDishCartQuantity;
 import com.example.booking_app.models.dish.CartDish;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     private Context context;
     private ArrayList<CartDish> listCartDish;
+    ChangeDishCartQuantity changeDishCartQuantity;
 
-
-    public CartAdapter(Context context, ArrayList<CartDish> listCartDish) {
+    public CartAdapter(Context context, ArrayList<CartDish> listCartDish, ChangeDishCartQuantity changeDishCartQuantity) {
         this.context = context;
         this.listCartDish = listCartDish;
+        this.changeDishCartQuantity = changeDishCartQuantity;
     }
 
-    public class CartViewHolder extends RecyclerView.ViewHolder {
+    public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView cart_dish_name;
         TextView cart_dish_price;
         ImageView cart_dish_image;
         TextView cart_dish_quantity;
+        ImageView plus, minus;
 
         public CartViewHolder(View itemView) {
             super(itemView);
@@ -37,6 +41,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             cart_dish_price = (TextView) itemView.findViewById(R.id.cart_dish_price);
             cart_dish_image = (ImageView) itemView.findViewById(R.id.cart_dish_image);
             cart_dish_quantity = (TextView) itemView.findViewById(R.id.cart_dish_quantity);
+            plus = (ImageView) itemView.findViewById(R.id.cart_dish_plus);
+            minus = (ImageView) itemView.findViewById(R.id.cart_dish_sub);
+            plus.setOnClickListener(this);
+            minus.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            changeDishCartQuantity.changeQuantity(getPosition(), v);
+            int n = Integer.parseInt(cart_dish_quantity.getText().toString());
+            switch (v.getId()){
+                case R.id.cart_dish_plus:
+                    cart_dish_quantity.setText(String.valueOf(n+1));
+                    break;
+                case R.id.cart_dish_sub:
+                    cart_dish_quantity.setText(String.valueOf(n-1));
+            }
+
         }
     }
 
@@ -51,8 +73,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         holder.cart_dish_name.setText(listCartDish.get(position).getName());
-        holder.cart_dish_price.setText(listCartDish.get(position).getPrice());
-        holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
+        holder.cart_dish_price.setText(listCartDish.get(position).getPrice().toString());
+        Picasso.with(context).load(listCartDish.get(position).getImage()).into(holder.cart_dish_image);
+       // holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
         holder.cart_dish_quantity.setText(String.valueOf(listCartDish.get(position).getQuantity()));
     }
 

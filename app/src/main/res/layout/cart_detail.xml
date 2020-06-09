@@ -1,58 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="400dp"
     android:id="@+id/cart_detail"
     android:background="#ffffff"
     >
+
     <LinearLayout
+        android:id="@+id/linearLayout15"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="1dp"
-            >
+            android:layout_margin="1dp">
+
             <ImageView
                 android:id="@+id/x_icon"
-                android:foregroundGravity="center"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:src="@drawable/xxx"></ImageView>
+
             <TextView
                 android:id="@+id/text_cart"
-                android:layout_weight="7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="#000000"
+                android:layout_weight="7"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:text="Giỏ hàng">
-            </TextView>
+                android:text="Giỏ hàng"
+                android:textColor="#000000"
+                android:textSize="20sp"></TextView>
+
             <TextView
                 android:id="@+id/delete_cart"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="#f11"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Xóa hết"
-                ></TextView>
+                android:textColor="#D30606"
+                android:textSize="16dp"></TextView>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_margin="1dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="1dp">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_cart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-              />
+                android:layout_marginBottom="40dp"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
+
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="40dp"
+        android:text="Confirm Order"
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        android:background="#AE0F03"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

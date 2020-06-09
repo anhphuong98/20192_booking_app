@@ -1,5 +1,6 @@
 package com.example.booking_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,14 +31,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Storedetail extends AppCompatActivity  {
-    ImageView storeimg, additem, cartdishimg;
+    ConstraintLayout storedetail;
+    ImageView storeimg, additem, cartdishimg, x_icon;
     DishService dishService;
-    TextView stname, steva, stopcltime, staddress, stphone, quantityincart;
-    Button cartbtn;
+    TextView stname, steva, stopcltime, staddress, stphone, quantityincart, delete_cart;
+    Button cartbtn, confirmorder;
     CardView cardView;
     RecyclerView listdish;
     StoreDishAdapter storeDishAdapter;
-    ImageView x_icon;
     RecyclerView recycler_view_cart;
     private ArrayList<CartDish> listCartDish = new ArrayList<CartDish>();
 
@@ -45,13 +47,17 @@ public class Storedetail extends AppCompatActivity  {
 
     private int quantity = 1;
     private int cartquantity = 0;
+    public int updateRecycler = 0;
+    public BottomSheetDialog bottomSheetDialog;
+    public CartAdapter cartAdapter;
 
     Clickdishitem clickdishitem = new Clickdishitem() {
         @Override
         public void click(int id) {
             StoreDish dish = stdish.get(id);
             int position = 0;
-            //CartDish cdish = new CartDish(dish.getId(), dish.getName(), dish.getPrice(), quantity, dish.getUrlImage())
+            in = 0;
+
             for(int i = 0; i < listCartDish.size(); i++){
                 if(dish.getId() == listCartDish.get(i).getId()){
                     in = 1;
@@ -63,6 +69,7 @@ public class Storedetail extends AppCompatActivity  {
             }
             if (in == 1){
                 CartDish cdish = listCartDish.get(position);
+                cartquantity +=1;
                 cdish.setQuantity(cdish.getQuantity() + 1);
             } else {
                 CartDish cartDish = new CartDish(dish.getId(), dish.getName(), dish.getPrice(), quantity, dish.getUrlImage());
@@ -74,48 +81,47 @@ public class Storedetail extends AppCompatActivity  {
             if(cartquantity >= 1){
                 cardView.setVisibility(View.VISIBLE);
             }
-
             cartbtn.setVisibility(View.VISIBLE);
         }
     };
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("cart", "blabla");
-        if(cartquantity >= 1){
+    ChangeDishCartQuantity changeDishCartQuantity= new ChangeDishCartQuantity() {
+        @Override
+        public void changeQuantity(int id, View view) {
+            CartDish cartDish = listCartDish.get(id);
+            switch (view.getId()){
+                case R.id.cart_dish_plus:
+                    cartquantity +=1;
+                    cartDish.setQuantity(cartDish.getQuantity() + 1);
+                    break;
+                case R.id.cart_dish_sub:
+                    cartquantity -= 1;
+                    cartDish.setQuantity(cartDish.getQuantity() - 1);
+                    break;
+            }
 
-            cardView.setVisibility(View.VISIBLE);
+            if (cartDish.getQuantity()<=0){
+                Log.d("testing", cartDish.getName());
+                updateCart(listCartDish.indexOf(cartDish));
+
+            }
+            if(cartquantity <=0){
+                bottomSheetDialog.dismiss();
+                cardView.setVisibility(View.INVISIBLE);
+                cartbtn.setVisibility(View.INVISIBLE);
+            }
+            quantityincart.setText(Integer.toString(cartquantity));
         }
-    }
+    };
 
-    @Override
-    protected void onRestart() {
-        Log.d("cart", "rt");
-        super.onRestart();
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("cart", "pa");
-    }
-
-    @Override
-    protected void onStop() {
-        Log.d("cart", "st");
-        super.onStop();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storedetail);
         dishService = APIUtils.getDishService();
         init();
-
         getData();
-
+        setupCart();
 
     }
 
@@ -134,40 +140,13 @@ public class Storedetail extends AppCompatActivity  {
         cartbtn = (Button) findViewById(R.id.cartbtn);
         cardView.setVisibility(View.INVISIBLE);
         cartbtn.setVisibility(View.INVISIBLE);
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+
+        //bottom cart
+        bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(R.layout.cart_detail);
-
-        cartbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.show();
-                x_icon = (ImageView) bottomSheetDialog.findViewById(R.id.x_icon);
-                if(x_icon != null) {
-                    x_icon.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            bottomSheetDialog.dismiss();
-                        }
-                    });
-                }
-                recycler_view_cart = (RecyclerView) bottomSheetDialog.findViewById(R.id.recycler_view_cart);
-                recycler_view_cart.setHasFixedSize(true);
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-                recycler_view_cart.setLayoutManager(layoutManager);
-                CartAdapter cartAdapter = new CartAdapter(getApplicationContext(), listCartDish);
-                recycler_view_cart.setAdapter(cartAdapter);
-
-            }
-        });
-
-        if(x_icon != null) {
-            x_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    bottomSheetDialog.dismiss();
-                }
-            });
-        }
+        recycler_view_cart = (RecyclerView) bottomSheetDialog.findViewById(R.id.recycler_view_cart);
+        cartAdapter = new CartAdapter(getApplicationContext(), listCartDish, changeDishCartQuantity);
+        confirmorder = (Button) bottomSheetDialog.findViewById(R.id.confirm_button);
     }
 
     public void getData(){
@@ -194,5 +173,71 @@ public class Storedetail extends AppCompatActivity  {
     }
 
 
+    public void setupCart(){
+        cartbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //cartbtn.setBackgroundColor(000000);
+                bottomSheetDialog.show();
+                delete_cart = (TextView) bottomSheetDialog.findViewById(R.id.delete_cart);
+                x_icon = (ImageView) bottomSheetDialog.findViewById(R.id.x_icon);
+                if(x_icon != null) {
+                    x_icon.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            bottomSheetDialog.dismiss();
+                        }
+                    });
+                }
+                delete_cart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("testing", "i am testing");
+                        listCartDish.clear();
+                        bottomSheetDialog.dismiss();
+                        cartquantity = 0;
+                        cartbtn.setVisibility(View.INVISIBLE);
+                        cardView.setVisibility(View.INVISIBLE);
+                    }
+                });
+
+                recycler_view_cart.setHasFixedSize(true);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                recycler_view_cart.setLayoutManager(layoutManager);
+                recycler_view_cart.setAdapter(cartAdapter);
+
+
+            }
+        });
+
+        //cartbtn.setBackgroundColor(808080);
+        if(x_icon != null) {
+            x_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   bottomSheetDialog.dismiss();
+                }
+            });
+
+        }
+
+    }
+    public void updateCart(int position){
+            listCartDish.remove(position);
+            recycler_view_cart.removeViewAt(position);
+            cartAdapter.notifyItemRemoved(position);
+            cartAdapter.notifyItemRangeChanged(position, listCartDish.size());
+            cartAdapter.notifyDataSetChanged();
+    }
+
+    public void confirmOrder(){
+            confirmorder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), ConfirmOrder.class);
+                    startActivity(intent);
+                }
+            });
+    }
 
 }

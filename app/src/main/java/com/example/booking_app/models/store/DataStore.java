@@ -3,7 +3,9 @@ package com.example.booking_app.models.store;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataStore {
+import java.io.Serializable;
+
+public class DataStore  implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

@@ -22,8 +22,10 @@ import com.example.booking_app.connection.DishService;
 import com.example.booking_app.models.dish.CartDish;
 import com.example.booking_app.models.dish.StoreDish;
 import com.example.booking_app.models.dish.StoreDishResponse;
+import com.example.booking_app.models.store.DataStore;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -31,6 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Storedetail extends AppCompatActivity  {
+
     ConstraintLayout storedetail;
     ImageView storeimg, additem, cartdishimg, x_icon;
     DishService dishService;
@@ -151,7 +154,8 @@ public class Storedetail extends AppCompatActivity  {
     }
 
     public void getData(){
-        Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(1);
+        DataStore store = (DataStore) getIntent().getSerializableExtra("StoreDetail");
+        Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(store.getId());
         storeDishResponseCall.enqueue(new Callback<StoreDishResponse>() {
             @Override
             public void onResponse(Call<StoreDishResponse> call, Response<StoreDishResponse> response) {

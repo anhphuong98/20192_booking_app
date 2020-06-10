@@ -1,6 +1,8 @@
 package com.example.booking_app.fragment;
 
-import android.app.Fragment;
+//import android.app.Fragment;
+import androidx.fragment.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +14,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.booking_app.R;
-import com.example.booking_app.activity.HomeActivity;
+import com.example.booking_app.activity.Storedetail;
 import com.example.booking_app.adapter.StoreAdapter;
 import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.StoreService;
@@ -25,11 +22,19 @@ import com.example.booking_app.models.store.DataStore;
 import com.example.booking_app.models.store.StoreResponse;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.booking_app.R;
+
 
 public class FragmentHome extends Fragment {
     RecyclerView recyclerView;
@@ -63,29 +68,42 @@ public class FragmentHome extends Fragment {
 
     }
 
-    public void getAllStoreHome() {
+     public void getAllStoreHome() {
         Call<StoreResponse> responseStore = storeService.getAllStore();
         responseStore.enqueue(new Callback<StoreResponse>() {
             @Override
             public void onResponse(Call<StoreResponse> call, Response<StoreResponse> response) {
-                if(response.isSuccessful()){
-                    listDataStore = response.body().getRows();
+                if (response.isSuccessful()) {
+                    final ArrayList<DataStore> listStore = response.body().getRows();
                     recyclerView.setHasFixedSize(true);
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL , false);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     recyclerView.setLayoutManager(layoutManager);
-                    StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listDataStore);
+                    StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listStore);
                     recyclerView.setAdapter(storeAdapter);
-                }
-            }
+                    storeAdapter.setOnStoreListener(new StoreAdapter.OnStoreListener() {
+                        @Override
+                        public void onStoreClick(int position) {
+                            Intent intent = new Intent(getActivity(), Storedetail.class);
+                            intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
+//                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
 
+                        }
+
+
+                    });
+                }
+
+
+            }
             @Override
-            public void onFailure(Call<StoreResponse> call, Throwable t) {
+            public void onFailure (Call < StoreResponse > call, Throwable t){
                 Log.e("Loi", t.getMessage());
             }
+
         });
     }
-
-    @Nullable
+            @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -97,3 +115,8 @@ public class FragmentHome extends Fragment {
         return view;
     }
 }
+
+
+
+
+

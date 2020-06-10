@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,12 +15,15 @@ import com.example.booking_app.adapter.CartAdapter;
 import com.example.booking_app.models.dish.CartDish;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
     Button cart;
     ImageView x_icon;
     RecyclerView recycler_view_cart;
+    TextView xoa;
     private ArrayList<CartDish> listCartDish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +33,26 @@ public class CartActivity extends AppCompatActivity {
         addItem();
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(R.layout.cart_detail);
+
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.show();
                 x_icon = (ImageView) bottomSheetDialog.findViewById(R.id.x_icon);
+                xoa = (TextView) bottomSheetDialog.findViewById(R.id.delete_cart);
                 if(x_icon != null) {
                     x_icon.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             bottomSheetDialog.dismiss();
+                        }
+                    });
+                }
+                if(xoa != null){
+                    xoa.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            System.out.println("da xoa cartdetail");
                         }
                     });
                 }
@@ -51,14 +65,14 @@ public class CartActivity extends AppCompatActivity {
 
             }
         });
-        if(x_icon != null) {
-            x_icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    bottomSheetDialog.dismiss();
-                }
-            });
-        }
+//        if(x_icon != null) {
+//            x_icon.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    bottomSheetDialog.dismiss();
+//                }
+//            });
+//        }
     }
 
     public void addItem() {

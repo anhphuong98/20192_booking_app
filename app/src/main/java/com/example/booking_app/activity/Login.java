@@ -32,6 +32,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     Button login;
     SOService mSOService;
     ProgressBar pg;
+    ImageView backLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         login.setOnClickListener(this);
 
         txt2.setOnClickListener(this);
+        backLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
     private void init(){
         logo = (ImageView) findViewById(R.id.logologin);
@@ -51,6 +58,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         txt2 = (TextView) findViewById(R.id.login2);
         login = (Button) findViewById(R.id.login);
         pg = (ProgressBar) findViewById(R.id.loadlogin);
+        backLogin = (ImageView) findViewById(R.id.backLogin);
         pg.setVisibility(View.INVISIBLE);
     }
 
@@ -91,6 +99,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         SharedPreferences token = Login.this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = token.edit();
                         editor.putString("token", "Bearer "+ userResponse.getToken());
+                        editor.putBoolean("signined", true);
                         editor.putInt("id", userResponse.getData().getId());
                         editor.putString("avatar", userResponse.getData().getUrl());
                         editor.putString("email", userResponse.getData().getEmail());

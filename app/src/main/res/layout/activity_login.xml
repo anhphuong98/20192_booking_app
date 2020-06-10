@@ -7,6 +7,19 @@
     tools:context=".activity.Login">
 
     <ImageView
+        android:id="@+id/backLogin"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:tint="#FFFFFF"
+        android:translationZ="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
         android:id="@+id/logologin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

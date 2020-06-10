@@ -1,18 +1,12 @@
 package com.example.booking_app.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booking_app.R;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,14 +18,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = (Button) findViewById(R.id.main);
-        btn.setOnClickListener(new View.OnClickListener() {
+//        btn = (Button) findViewById(R.id.main);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, Register.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.enter, R.anim.out);
+//            }
+//        });
+        Thread thread = new Thread(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Register.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.enter, R.anim.out);
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                }catch (Exception e){
+
+                }finally {
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
             }
         });
+        thread.start();
     }
 }

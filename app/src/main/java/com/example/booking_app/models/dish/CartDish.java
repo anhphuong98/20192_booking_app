@@ -1,23 +1,34 @@
 package com.example.booking_app.models.dish;
 
 public class CartDish {
+    private int id;
     private String name;
-    private String price;
+    private Double price;
     private int quantity;
-    private int image;
+    private String image;
 
-    public CartDish(String name, String price, int quantity, int image) {
+    public CartDish(){}
+    public CartDish(int id, String name, Double price, int quantity, String image) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.image = image;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -29,7 +40,7 @@ public class CartDish {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -37,11 +48,11 @@ public class CartDish {
         this.quantity = quantity;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

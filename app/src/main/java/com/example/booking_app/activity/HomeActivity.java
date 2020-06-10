@@ -1,19 +1,16 @@
 package com.example.booking_app.activity;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+
 import android.os.Bundle;
 import android.view.View;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Fragment;
-import android.widget.LinearLayout;
 
 import com.example.booking_app.R;
-
 import com.example.booking_app.fragment.FragmentHome;
 import com.example.booking_app.fragment.FragmentUserInfo;
 public class HomeActivity extends AppCompatActivity {

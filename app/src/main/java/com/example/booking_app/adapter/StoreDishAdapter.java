@@ -1,5 +1,6 @@
 package com.example.booking_app.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,28 +12,42 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
+import com.example.booking_app.activity.Clickdishitem;
 import com.example.booking_app.models.dish.StoreDish;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+
 public class StoreDishAdapter extends RecyclerView.Adapter<StoreDishAdapter.Storedishholder> {
     Context context;
     ArrayList<StoreDish> storeDishes;
+    private int selected = RecyclerView.NO_POSITION;
+    Clickdishitem clickitem;
 
-    public StoreDishAdapter(Context context, ArrayList<StoreDish> storeDishes) {
+    public StoreDishAdapter(Context context, ArrayList<StoreDish> storeDishes, Clickdishitem clickitem) {
         this.context = context;
         this.storeDishes = storeDishes;
+        this.clickitem = clickitem;
     }
-    public class Storedishholder extends RecyclerView.ViewHolder {
+    public class Storedishholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView dishimg;
         TextView dishname;
         TextView dishprice;
+        ImageView additem;
+        @SuppressLint("WrongViewCast")
         public Storedishholder(@NonNull View itemView) {
             super(itemView);
             dishimg = (ImageView) itemView.findViewById(R.id.dishimg);
             dishname = (TextView) itemView.findViewById(R.id.dishname);
             dishprice = (TextView) itemView.findViewById(R.id.price);
+            additem = (ImageView) itemView.findViewById(R.id.additem);
+            additem.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickitem.click(getPosition());
         }
     }
     @NonNull

@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Noactionbar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.changeUserInfo.ChangePassword"></activity>
+        <activity android:name=".activity.ConfirmOrder"></activity>
+        <activity android:name=".activity.changeUserInfo.ChangePassword" />
         <activity android:name=".activity.changeUserInfo.ChangePhone" />
         <activity android:name=".activity.changeUserInfo.ChangeAddress" />
         <activity android:name=".activity.changeUserInfo.ChangeName" />

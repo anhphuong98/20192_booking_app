@@ -40,7 +40,7 @@ public class ConfirmOrderAdapter extends RecyclerView.Adapter<ConfirmOrderAdapte
         holder.name.setText(cartDish.getName());
         Double price = cartDish.getPrice()*cartDish.getQuantity();
         holder.price.setText(price.toString());
-        holder.quantity.setText(cartDish.getQuantity());
+        holder.quantity.setText(Integer.toString(cartDish.getQuantity()));
     }
 
     @Override

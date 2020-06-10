@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Noactionbar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ConfirmOrder"></activity>
+        <activity android:name=".activity.HomeActivity"></activity>
         <activity android:name=".activity.changeUserInfo.ChangePassword" />
         <activity android:name=".activity.changeUserInfo.ChangePhone" />
         <activity android:name=".activity.changeUserInfo.ChangeAddress" />
@@ -22,10 +22,7 @@
         <activity android:name=".activity.DetailUserInfo" />
         <activity android:name=".activity.Storedetail"/>
         <activity android:name=".activity.DetailCart" />
-        <activity android:name=".activity.CartActivity" >
-
-        </activity>
-        <activity android:name=".activity.HomeActivity" >
+        <activity android:name=".activity.ConfirmOrder" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

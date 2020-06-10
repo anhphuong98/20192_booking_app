@@ -31,6 +31,7 @@ public class ConfirmOrder extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_order);
 
         init();
+        addItem();
         getItemOrder();
     }
     public void init(){
@@ -66,5 +67,9 @@ public class ConfirmOrder extends AppCompatActivity {
         confirmOrderAdapter = new ConfirmOrderAdapter(ConfirmOrder.this, cartDish);
         listitem.setAdapter(confirmOrderAdapter);
 
+    }
+    public void addItem(){
+        cartDish.add(new CartDish(1, "thit nuong", (double) 10000, 2, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM6YTLcOuFyU&psig=AOvVaw3vI8s6NHvKPHOBRmQE6R-1&ust=1591860504857000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCkjdLc9ukCFQAAAAAdAAAAABAD"));
+        cartDish.add(new CartDish(2, "thit nuong mat ong", (double) 10000, 2, "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM6YTLcOuFyU&psig=AOvVaw3vI8s6NHvKPHOBRmQE6R-1&ust=1591860504857000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCkjdLc9ukCFQAAAAAdAAAAABAD"));
     }
 }

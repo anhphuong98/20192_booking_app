@@ -1,6 +1,7 @@
 package com.example.booking_app.fragment;
 
-import android.app.Fragment;
+//import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;

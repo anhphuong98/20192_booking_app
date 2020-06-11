@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f1f2f3"
+    android:theme="@style/SearchView"
     tools:context=".activity.HomeActivity">
 
     <FrameLayout
@@ -43,6 +44,7 @@
                 android:id="@+id/iconMenuHome"
                 android:layout_width="19dp"
                 android:layout_height="29dp"
+                android:tint="#777777"
                 app:srcCompat="@drawable/icon_home" />
 
             <TextView
@@ -67,8 +69,9 @@
 
             <ImageView
                 android:id="@+id/iconMenuHistory"
-                android:layout_width="21dp"
+                android:layout_width="19dp"
                 android:layout_height="29dp"
+                android:tint="#777777"
                 app:srcCompat="@drawable/icon_order" />
 
             <TextView
@@ -90,8 +93,9 @@
 
             <ImageView
                 android:id="@+id/iconMenuProfile"
-                android:layout_width="39dp"
-                android:layout_height="32dp"
+                android:layout_width="19dp"
+                android:layout_height="29dp"
+                android:tint="#777777"
                 app:srcCompat="@drawable/icon_profile" />
 
             <TextView

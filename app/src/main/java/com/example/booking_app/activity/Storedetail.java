@@ -123,6 +123,7 @@ public class Storedetail extends AppCompatActivity  {
         getData();
         setupCart();
 
+        confirmOrder();
     }
 
     public void init(){

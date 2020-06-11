@@ -104,7 +104,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imageView4"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/voucher" />
@@ -119,12 +119,12 @@
                 android:layout_marginLeft="20dp"
                 android:text="Ví Voucher"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+               />
 
             <ImageView
                 android:layout_marginRight="5dp"
                 android:id="@+id/imageView5"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/next" />
@@ -144,7 +144,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imageView7"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/shoppe" />
@@ -159,12 +159,12 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+               />
 
             <ImageView
                 android:layout_marginRight="5dp"
                 android:id="@+id/imageView6"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/next" />
@@ -184,7 +184,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imageView8"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/pay"/>
@@ -199,11 +199,11 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                />
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
@@ -225,7 +225,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imagex"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/address"
@@ -240,12 +240,12 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                />
 
             <ImageView
                 android:layout_marginRight="5dp"
                 android:id="@+id/imageVx"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/next" />
@@ -264,7 +264,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imagex1"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/friend" />
@@ -278,12 +278,12 @@
                 android:layout_marginLeft="20dp"
                 android:text="Mời bạn bè"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                 />
 
             <ImageView
                 android:layout_marginRight="5dp"
                 android:id="@+id/image3"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/next" />
@@ -303,7 +303,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imagex2"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/envelope" />
@@ -317,12 +317,12 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                />
 
             <ImageView
                 android:layout_marginRight="5dp"
                 android:id="@+id/image4"
-                android:layout_width="10dp"
+                android:layout_width="7dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/next" />
@@ -341,7 +341,7 @@
             <ImageView
                 android:layout_marginLeft="5dp"
                 android:id="@+id/imagex11"
-                android:layout_width="20dp"
+                android:layout_width="15dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/application" />
@@ -355,12 +355,12 @@
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                />
 
             <ImageView
             android:layout_marginRight="5dp"
             android:id="@+id/imagecc"
-            android:layout_width="10dp"
+            android:layout_width="7dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/next" />
@@ -386,7 +386,7 @@
                 android:layout_weight="6"
                 android:text="Đăng xuất"
                 android:textColor="#f00"
-                android:textSize="20sp" />
+               />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

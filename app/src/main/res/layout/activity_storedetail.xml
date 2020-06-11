@@ -3,188 +3,145 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/storedetail"
+    android:background="#f1f2f3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Storedetail">
+    <ImageView
+        android:id="@+id/returnHome"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:tint="#FFFFFF"
+        android:translationZ="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
-
-    <!--    <androidx.appcompat.widget.Toolbar-->
-    <!--        android:id="@+id/toolbar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        android:background="#FF5722"-->
-    <!--        android:minHeight="?attr/actionBarSize"-->
-    <!--        android:theme="?attr/actionBarTheme"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="1.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:titleTextColor="#FFFFFF">-->
-
-    <!--    </androidx.appcompat.widget.Toolbar>-->
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <ImageView
+        android:id="@+id/storeavt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/thitnuong" />
+    <LinearLayout
+        android:id="@+id/linearLayout16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeavt">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/stname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:text="Grill Grill - "
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgevaluation"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/star" />
+
+            <TextView
+                android:id="@+id/evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:text="4.8"
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/opcltime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open: 08:00 - 22:00"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/staddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address: No 1, Dai Co Viet Street"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/stphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone: 0123456789"
+            android:textColor="#000000" />
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="420dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout16">
 
-        <RelativeLayout
-            android:id="@+id/headerstdt"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listitem"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:tint="#FFFFFF"
-                android:translationZ="10dp"
-                app:srcCompat="@drawable/back" />
-
-            <ImageView
-                android:id="@+id/storeavt"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_weight="0"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/thitnuong" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/stin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/stname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0"
-                    android:text="Grill Grill - "
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/imgevaluation"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="0"
-                    app:srcCompat="@drawable/star" />
-
-                <TextView
-                    android:id="@+id/evaluation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0"
-                    android:text="4.8"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/opcltime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0"
-                android:text="Open: 08:00 - 22:00" />
-
-            <TextView
-                android:id="@+id/staddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0"
-                android:text="Address: No 1, Dai Co Viet Street" />
-
-            <TextView
-                android:id="@+id/stphone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0"
-                android:text="Phone: 0123456789" />
-        </LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listitem"
-        android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        <Button
+            android:id="@+id/cartbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#f11"
+            android:text="Cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <Button
-        android:id="@+id/cartbtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewquantity"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginRight="20dp"
-        android:translationZ="1dp"
-        app:cardBackgroundColor="#A60000"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/cartbtn"
-        app:layout_constraintEnd_toEndOf="@id/cartbtn"
-        app:layout_constraintTop_toTopOf="@id/cartbtn">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewquantity"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginRight="20dp"
+            android:translationZ="1dp"
+            app:cardBackgroundColor="#ffffff"
+            app:cardCornerRadius="13dp"
+            app:layout_constraintBottom_toBottomOf="@id/cartbtn"
+            app:layout_constraintEnd_toEndOf="@id/cartbtn"
+            app:layout_constraintTop_toTopOf="@id/cartbtn">
 
 
-        <TextView
-            android:id="@+id/quantityincart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="1" />
-    </androidx.cardview.widget.CardView>
-
-
+            <TextView
+                android:id="@+id/quantityincart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="1"
+                android:textColor="#000000" />
+        </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

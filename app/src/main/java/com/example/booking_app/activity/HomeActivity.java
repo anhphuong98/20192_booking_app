@@ -1,30 +1,19 @@
 package com.example.booking_app.activity;
 
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-
-
+//import android.app.Fragment;
 //import android.app.FragmentManager;
-//import androidx.fragment.app.FragmentManager;
 //import android.app.FragmentTransaction;
 
-import android.content.SharedPreferences;
-import android.graphics.Color;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.graphics.Typeface;
-
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-//import android.app.Fragment;
-import androidx.fragment.app.Fragment;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 
 import com.example.booking_app.R;

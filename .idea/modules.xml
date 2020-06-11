@@ -3,13 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Booking_App.iml" filepath="$PROJECT_DIR$/Booking_App.iml" group="Booking_App" />
-<<<<<<< HEAD
-=======
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Booking_App-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Booking_App-app.iml" group="Booking_App/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Desktop-booking_app-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Desktop-booking_app-app.iml" group="Booking_App/app" />
->>>>>>> e65eeab05825fa7625690092528f23d813ec419a
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Booking_App/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/booking_app.iml" filepath="$PROJECT_DIR$/.idea/booking_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/booking_app-Booking_App.iml" filepath="$PROJECT_DIR$/booking_app-Booking_App.iml" group="Booking_App" />
     </modules>
   </component>
 </project>

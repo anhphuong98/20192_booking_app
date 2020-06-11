@@ -24,6 +24,7 @@ import com.example.booking_app.models.dish.StoreDish;
 import com.example.booking_app.models.dish.StoreDishResponse;
 import com.example.booking_app.models.store.DataStore;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class Storedetail extends AppCompatActivity  {
     RecyclerView listdish;
     StoreDishAdapter storeDishAdapter;
     RecyclerView recycler_view_cart;
+    ImageView returnHome;
     private ArrayList<CartDish> listCartDish = new ArrayList<CartDish>();
 
     private ArrayList<StoreDish> stdish = new ArrayList<StoreDish>();
@@ -123,10 +125,21 @@ public class Storedetail extends AppCompatActivity  {
         setContentView(R.layout.activity_storedetail);
         dishService = APIUtils.getDishService();
         init();
+        setAvatarStore();
         getData();
         setupCart();
-
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         confirmOrder();
+    }
+    public void setAvatarStore() {
+        Intent intent = getIntent();
+        String url = intent.getStringExtra("urlImageStore");
+        Picasso.with(getApplicationContext()).load(url).into(storeimg);
     }
 
     public void init(){
@@ -144,6 +157,7 @@ public class Storedetail extends AppCompatActivity  {
         cartbtn = (Button) findViewById(R.id.cartbtn);
         cardView.setVisibility(View.INVISIBLE);
         cartbtn.setVisibility(View.INVISIBLE);
+        returnHome = (ImageView) findViewById(R.id.returnHome);
 
         //bottom cart
         bottomSheetDialog = new BottomSheetDialog(this);

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +35,9 @@ public class HomeActivity extends AppCompatActivity {
 //        linearMenuHistoryOrder.setOnClickListener((View.OnClickListener) this);
 //        linearMenuHome.setOnClickListener((View.OnClickListener) this);
 //        linearMenuProfile.setOnClickListener((View.OnClickListener) this);
-
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
         setContentView(R.layout.activity_home);
         FragmentManager fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

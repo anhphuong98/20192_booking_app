@@ -24,8 +24,8 @@ import com.example.booking_app.models.dish.StoreDish;
 import com.example.booking_app.models.dish.StoreDishResponse;
 import com.example.booking_app.models.store.DataStore;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -156,6 +156,13 @@ public class Storedetail extends AppCompatActivity  {
     public void getData(){
         DataStore store = (DataStore) getIntent().getSerializableExtra("StoreDetail");
         Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(store.getId());
+        Picasso.with(getApplicationContext()).load(store.getUrlImage()).into(storeimg);
+        stname.setText(store.getName() + " - ");
+        steva.setText("4");
+        String opcl = "Open: " + store.getOpenTime() +" - " + store.getCloseTime();
+        stopcltime.setText(opcl);
+        staddress.setText("Address: " + store.getAddress());
+        stphone.setText("Phone: " + store.getPhone());
         storeDishResponseCall.enqueue(new Callback<StoreDishResponse>() {
             @Override
             public void onResponse(Call<StoreDishResponse> call, Response<StoreDishResponse> response) {

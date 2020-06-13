@@ -205,36 +205,6 @@
             android:textColor="#000000" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/discount"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ship">
-
-        <TextView
-            android:id="@+id/discountfee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Discount"
-            android:textColor="#000000" />
-
-        <TextView
-            android:id="@+id/discountfee2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_weight="0"
-            android:text="-20.000d"
-            android:textColor="#000000" />
-    </LinearLayout>
-    <LinearLayout
         android:id="@+id/totalprice"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -242,7 +212,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/discount">
+        app:layout_constraintTop_toBottomOf="@+id/ship">
 
         <TextView
             android:id="@+id/totalprice1"

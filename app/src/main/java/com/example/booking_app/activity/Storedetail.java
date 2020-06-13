@@ -1,6 +1,7 @@
 package com.example.booking_app.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,13 +27,14 @@ import com.example.booking_app.models.store.DataStore;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Storedetail extends AppCompatActivity  {
+public class Storedetail extends AppCompatActivity {
 
     ConstraintLayout storedetail;
     ImageView storeimg, additem, cartdishimg, x_icon;
@@ -51,7 +53,7 @@ public class Storedetail extends AppCompatActivity  {
 
     private int quantity = 1;
     private int cartquantity = 0;
-    public int updateRecycler = 0;
+    SharedPreferences sharedPreferences;
     public BottomSheetDialog bottomSheetDialog;
     public CartAdapter cartAdapter;
 
@@ -123,6 +125,7 @@ public class Storedetail extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storedetail);
         dishService = APIUtils.getDishService();
+        sharedPreferences = this.getSharedPreferences("userinfo",MODE_PRIVATE);
         init();
         setAvatarStore();
         getData();
@@ -256,11 +259,20 @@ public class Storedetail extends AppCompatActivity  {
     }
 
     public void confirmOrder(){
+
+
             confirmorder.setOnClickListener(new View.OnClickListener() {
-                @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), ConfirmOrder.class);
-                    startActivity(intent);
+                    if(sharedPreferences.getBoolean("signined",false)){
+                        Intent intent = new Intent(getApplicationContext(), ConfirmOrder.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("cart", (Serializable) listCartDish);
+                        intent.putExtra("Bundle", bundle);
+                        startActivity(intent);
+                    } else {
+                        Dialog dialog = new Dialog();
+                        dialog.show(getSupportFragmentManager(), "exple");
+                    }
                 }
             });
     }

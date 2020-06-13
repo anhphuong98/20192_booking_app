@@ -71,7 +71,7 @@ public class ConfirmOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
-        loadFindShipper = new BottomSheetDialog(getApplicationContext());
+        loadFindShipper = new BottomSheetDialog(this);
         loadFindShipper.setContentView(R.layout.loading_find_shipper);
         init();
         getItemOrder();

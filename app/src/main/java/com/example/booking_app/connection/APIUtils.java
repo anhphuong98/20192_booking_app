@@ -5,7 +5,7 @@ public class APIUtils {
 
     }
 
-    public static String API_URL = "http://192.168.1.185:8080/api/";
+    public static String API_URL = "http://192.168.1.185:4000/api/";
 
 
     public static SOService getSOService() {
@@ -16,5 +16,8 @@ public class APIUtils {
     }
     public static DishService getDishService(){
         return RetrofitClient.getClient(API_URL).create(DishService.class);
+    }
+    public static OrderService getOrderService() {
+        return RetrofitClient.getClient(API_URL).create(OrderService.class);
     }
 }

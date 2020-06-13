@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/storedetail"
+    android:background="#f1f2f3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Storedetail">
+    <ImageView
+        android:id="@+id/returnHome"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:tint="#FFFFFF"
+        android:translationZ="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/storeavt"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/thitnuong" />
+
+
+    <TextView
+        android:id="@+id/stname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="Grill Grill - "
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeavt" />
+
+    <ImageView
+        android:id="@+id/imgevaluation"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        app:layout_constraintStart_toEndOf="@+id/evaluation"
+        app:layout_constraintTop_toBottomOf="@+id/storeavt"
+        app:srcCompat="@drawable/star" />
+
+    <TextView
+        android:id="@+id/evaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="4.8"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/stname"
+        app:layout_constraintStart_toEndOf="@+id/stname"
+        app:layout_constraintTop_toBottomOf="@+id/storeavt" />
+
+    <TextView
+        android:id="@+id/opcltime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open: 08:00 - 22:00"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/stphone"
+        tools:layout_editor_absoluteX="52dp" />
+
+    <TextView
+        android:id="@+id/staddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address: No 1, Dai Co Viet Street"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/opcltime"
+        tools:layout_editor_absoluteX="9dp" />
+
+    <TextView
+        android:id="@+id/stphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone: 0123456789"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/stname"
+        tools:layout_editor_absoluteX="34dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listitem"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/cartbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/staddress" />
+
+    <Button
+        android:id="@+id/cartbtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#f11"
+        android:text="Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewquantity"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginRight="20dp"
+        android:translationZ="1dp"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="13dp"
+        app:layout_constraintBottom_toBottomOf="@id/cartbtn"
+        app:layout_constraintEnd_toEndOf="@id/cartbtn"
+        app:layout_constraintTop_toTopOf="@id/cartbtn">
+
+        <TextView
+            android:id="@+id/quantityincart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="1"
+            android:textColor="#000000" />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

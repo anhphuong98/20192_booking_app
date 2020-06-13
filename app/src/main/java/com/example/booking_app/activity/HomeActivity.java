@@ -44,19 +44,19 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         SharedPreferences sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
-//        if(sharedPreferences.getBoolean("signined", false)){
-//            Fragment fragment = new FragmentUserInfo();
-//            fragmentTransaction.add(R.id.frameContent, fragment);
-//            fragmentTransaction.commit();
-//        } else {
-//            Fragment fragment = new FragmentHome();
-//            fragmentTransaction.add(R.id.frameContent, fragment);
-//            fragmentTransaction.commit();
-//        }
+        if(sharedPreferences.getBoolean("signined", false)){
+            Fragment fragment = new FragmentUserInfo();
+            fragmentTransaction.add(R.id.frameContent, fragment);
+            fragmentTransaction.commit();
+        } else {
+            Fragment fragment = new FragmentHome();
+            fragmentTransaction.add(R.id.frameContent, fragment);
+            fragmentTransaction.commit();
+        }
 
-        Fragment fragment = new FragmentHome();
-        fragmentTransaction.add(R.id.frameContent, fragment);
-        fragmentTransaction.commit();
+//        Fragment fragment = new FragmentHome();
+//        fragmentTransaction.add(R.id.frameContent, fragment);
+//        fragmentTransaction.commit();
 
 
     }

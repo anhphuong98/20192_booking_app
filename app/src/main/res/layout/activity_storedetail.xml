@@ -8,22 +8,7 @@
     tools:context=".activity.Storedetail">
 
 
-    <!--    <androidx.appcompat.widget.Toolbar-->
-    <!--        android:id="@+id/toolbar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        android:background="#FF5722"-->
-    <!--        android:minHeight="?attr/actionBarSize"-->
-    <!--        android:theme="?attr/actionBarTheme"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="1.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:titleTextColor="#FFFFFF">-->
 
-    <!--    </androidx.appcompat.widget.Toolbar>-->
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"

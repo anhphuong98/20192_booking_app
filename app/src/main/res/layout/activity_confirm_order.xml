@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/back"
             android:layout_width="11dp"
             android:layout_height="29dp"
             android:layout_gravity="center"
@@ -74,7 +74,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/avatar" />
 
         <LinearLayout
             android:id="@+id/inforeceiver"

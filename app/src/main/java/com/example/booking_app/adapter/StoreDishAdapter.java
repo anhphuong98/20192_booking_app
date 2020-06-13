@@ -2,6 +2,8 @@ package com.example.booking_app.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,9 @@ import com.example.booking_app.activity.Clickdishitem;
 import com.example.booking_app.models.dish.StoreDish;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class StoreDishAdapter extends RecyclerView.Adapter<StoreDishAdapter.Storedishholder> {
@@ -64,12 +68,18 @@ public class StoreDishAdapter extends RecyclerView.Adapter<StoreDishAdapter.Stor
             storedishholder.dishname.setText(storeDish.getName());
             Picasso.with(context).load(storeDish.getUrlImage()).into(storedishholder.dishimg);
             //storedishholder.dishimg.setImageResource(storeDishes.get(position).getUrl_image());
-            storedishholder.dishprice.setText(storeDish.getPrice().toString());
+            storedishholder.dishprice.setText(convertMoney(storeDish.getPrice()));
     }
 
     @Override
     public int getItemCount() {
         return storeDishes.size();
+    }
+
+    public String convertMoney(Double money) {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currentMoney = NumberFormat.getCurrencyInstance(localeVN);
+        return currentMoney.format(money);
     }
 
 

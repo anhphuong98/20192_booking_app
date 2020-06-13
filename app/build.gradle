@@ -59,4 +59,8 @@ dependencies {
 
 
     implementation files('libs/jbcrypt-0.3m.jar')
+
+    implementation('com.github.nkzawa:socket.io-client:0.5.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 }

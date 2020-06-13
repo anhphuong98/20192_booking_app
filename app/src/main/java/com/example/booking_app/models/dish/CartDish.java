@@ -1,6 +1,8 @@
 package com.example.booking_app.models.dish;
 
-public class CartDish {
+import java.io.Serializable;
+
+public class CartDish implements Serializable {
     private int id;
     private String name;
     private Double price;

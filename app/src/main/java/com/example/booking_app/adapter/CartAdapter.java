@@ -76,7 +76,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
 
         holder.cart_dish_name.setText(listCartDish.get(position).getName());
-        holder.cart_dish_price.setText(convertMoney(listCartDish.get(position).getPrice()));
+        double total = listCartDish.get(position).getPrice()*listCartDish.get(position).getQuantity();
+        holder.cart_dish_price.setText(convertMoney(total));
         Picasso.with(context).load(listCartDish.get(position).getImage()).into(holder.cart_dish_image);
        // holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
         holder.cart_dish_quantity.setText(String.valueOf(listCartDish.get(position).getQuantity()));

@@ -85,6 +85,7 @@ public class FragmentHome extends Fragment {
                         public void onStoreClick(int position) {
                             Intent intent = new Intent(getActivity(), Storedetail.class);
                             intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
+                            intent.putExtra("urlImageStore", (Serializable) listStore.get(position).getUrlImage());
 //                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
                             startActivity(intent);
 

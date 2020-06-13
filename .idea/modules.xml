@@ -4,9 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Booking_App.iml" filepath="$PROJECT_DIR$/Booking_App.iml" group="Booking_App" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Booking_App-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Booking_App-app.iml" group="Booking_App/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MKD&amp;UDDĐ-booking_app-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MKD&amp;UDDĐ-booking_app-app.iml" group="Booking_App/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Booking_App/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/booking_app.iml" filepath="$PROJECT_DIR$/.idea/booking_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking_app-Booking_App.iml" filepath="$PROJECT_DIR$/.idea/modules/booking_app-Booking_App.iml" group="Booking_App" />
       <module fileurl="file://$PROJECT_DIR$/app/booking_app-app.iml" filepath="$PROJECT_DIR$/app/booking_app-app.iml" group="Booking_App/app" />
     </modules>
   </component>

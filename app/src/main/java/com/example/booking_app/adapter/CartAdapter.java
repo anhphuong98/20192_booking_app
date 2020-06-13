@@ -15,7 +15,9 @@ import com.example.booking_app.activity.ChangeDishCartQuantity;
 import com.example.booking_app.models.dish.CartDish;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     private Context context;
@@ -72,8 +74,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+
         holder.cart_dish_name.setText(listCartDish.get(position).getName());
-        holder.cart_dish_price.setText(listCartDish.get(position).getPrice().toString());
+        holder.cart_dish_price.setText(convertMoney(listCartDish.get(position).getPrice()));
         Picasso.with(context).load(listCartDish.get(position).getImage()).into(holder.cart_dish_image);
        // holder.cart_dish_image.setImageResource(listCartDish.get(position).getImage());
         holder.cart_dish_quantity.setText(String.valueOf(listCartDish.get(position).getQuantity()));
@@ -82,5 +85,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public int getItemCount() {
         return listCartDish.size();
+    }
+
+    public String convertMoney(Double money) {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currentMoney = NumberFormat.getCurrencyInstance(localeVN);
+        return currentMoney.format(money);
     }
 }

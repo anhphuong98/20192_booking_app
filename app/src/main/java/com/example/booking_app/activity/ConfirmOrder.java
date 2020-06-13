@@ -1,7 +1,9 @@
 package com.example.booking_app.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import com.example.booking_app.R;
 import com.example.booking_app.adapter.ConfirmOrderAdapter;
 import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.OrderService;
+import com.example.booking_app.fragment.FragmentCurrentOrder;
 import com.example.booking_app.models.dish.CartDish;
 import com.example.booking_app.models.order.DishOrder;
 import com.example.booking_app.models.order.Order;
@@ -26,6 +29,7 @@ import com.example.booking_app.models.user.UpdateUserReponse;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONObject;
 
@@ -43,6 +47,7 @@ public class ConfirmOrder extends AppCompatActivity {
     TextView edit;
     Button submit;
     RecyclerView listitem;
+    BottomSheetDialog loadFindShipper;
 
     OrderService orderService;
     SharedPreferences sharedPreferences;
@@ -50,7 +55,9 @@ public class ConfirmOrder extends AppCompatActivity {
     ArrayList<CartDish> cartDish = new ArrayList<CartDish>();
     ConfirmOrderAdapter confirmOrderAdapter;
 
-    private final String URL_SERVER = "http://192.168.0.103:4000";
+    int accept = 0;
+
+    private final String URL_SERVER = "http://192.168.22.108:4000";
     private Socket mSocket;
 
     {
@@ -64,8 +71,8 @@ public class ConfirmOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
-
-
+        loadFindShipper = new BottomSheetDialog(getApplicationContext());
+        loadFindShipper.setContentView(R.layout.loading_find_shipper);
         init();
         getItemOrder();
 
@@ -84,6 +91,18 @@ public class ConfirmOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postOrder(order, tokenAuth);
+                CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        loadFindShipper.show();
+                    }
+                    @Override
+                    public void onFinish() {
+                        System.out.println("chay vo on finish nay");
+                    }
+                };
+                countDownTimer.start();
+
             }
         });
 
@@ -114,6 +133,11 @@ public class ConfirmOrder extends AppCompatActivity {
         //list item order
         listitem = (RecyclerView) findViewById(R.id.list_item_order);
         sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
+
+        //
+
+
+
     }
 
     public void getItemOrder(){
@@ -151,10 +175,7 @@ public class ConfirmOrder extends AppCompatActivity {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String message;
-                    message = data.optString("except");
-                    System.out.println("Nhan roi" + message);
-                    System.out.println(args[0]);
+                    accept = data.optInt("accept");
                 };
             });
         };
@@ -167,10 +188,7 @@ public class ConfirmOrder extends AppCompatActivity {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String message;
-                    message = data.optString("except");
-                    System.out.println("Huy roi" + message);
-                    System.out.println(args[0]);
+                    accept = data.optInt("accept");
                 };
             });
         };

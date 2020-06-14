@@ -3,7 +3,9 @@ import com.example.booking_app.models.store.DataStore;
 import com.example.booking_app.models.user.DataUser;
 import com.google.gson.annotations.SerializedName;
 
-public class DataOrder {
+import java.io.Serializable;
+
+public class DataOrder implements Serializable {
     @SerializedName("id")
     int id;
     @SerializedName("address")

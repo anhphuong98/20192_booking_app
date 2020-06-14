@@ -23,15 +23,14 @@ import retrofit2.Callback;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
     Context context;
     ArrayList<DataOrder> listOrder;
-    private OnStoreListener mOnStoreListener;
+    private OnOrderListener mOnOrderListener;
 
-
-    public interface OnStoreListener{
-        void onStoreClick(int position);
+    public interface OnOrderListener{
+        void onOrderClick(int position);
 
     }
-    public void setOnStoreListener(OnStoreListener onStoreListener) {
-        this.mOnStoreListener = onStoreListener;
+    public void setOrderListener(OrderAdapter.OnOrderListener onOrderListener) {
+        this.mOnOrderListener = onOrderListener;
     }
 
     public OrderAdapter(Context context, ArrayList<DataOrder> listOrder) {
@@ -46,7 +45,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     public OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.order_item, parent,false);
-        OrderHolder orderHolder = new OrderHolder(view,mOnStoreListener);
+        OrderHolder orderHolder = new OrderHolder(view,mOnOrderListener);
         return orderHolder;
     }
 
@@ -72,9 +71,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         TextView namestore, addressStore,priceOrder,timeOrder;
         ImageView imageStore;
-        OnStoreListener onStoreListener;
+        OnOrderListener onOrderListener;
 
-        public OrderHolder(@NonNull View itemView, OnStoreListener onStoreListener ) {
+        public OrderHolder(@NonNull View itemView, OnOrderListener onOrderListener ) {
             super(itemView);
             imageStore = (ImageView) itemView.findViewById(R.id.imagestore);
             namestore = (TextView) itemView.findViewById(R.id.namestore);
@@ -82,7 +81,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 //            priceOrder = (TextView) itemView.findViewById(R.id.priceOrder);
             timeOrder = (TextView) itemView.findViewById(R.id.timeOrder);
             itemView.setOnClickListener(this);
-            this.onStoreListener = onStoreListener;
+            this.onOrderListener = onOrderListener;
         }
 
         public OrderHolder(@NonNull View itemView) {
@@ -92,7 +91,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         @Override
         public void onClick(View v) {
-            onStoreListener.onStoreClick(getAbsoluteAdapterPosition());
+            onOrderListener.onOrderClick(getAbsoluteAdapterPosition());
         }
     }
 }

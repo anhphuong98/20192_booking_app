@@ -22,6 +22,7 @@
         <activity android:name=".activity.DetailUserInfo" />
         <activity android:name=".activity.Storedetail"/>
         <activity android:name=".activity.DetailCart" />
+        <activity android:name=".activity.OrderUserDetail" />
 
         <activity android:name=".activity.HomeActivity" >
 
@@ -39,6 +40,7 @@
 
         <activity android:name=".activity.Register" />
         <activity android:name=".activity.MainActivity" />
+
 
     </application>
 

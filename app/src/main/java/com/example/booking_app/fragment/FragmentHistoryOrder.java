@@ -1,7 +1,7 @@
 package com.example.booking_app.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,17 +17,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
+import com.example.booking_app.activity.OrderUserDetail;
 import com.example.booking_app.adapter.OrderAdapter;
-import com.example.booking_app.adapter.StoreAdapter;
 import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.OrderService;
 import com.example.booking_app.models.order.DataOrder;
 import com.example.booking_app.models.order.OrderResponse;
-import com.example.booking_app.models.store.DataStore;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,12 +56,24 @@ public class FragmentHistoryOrder extends Fragment {
                 OrderResponse orderResponse = response.body();
                 if(orderResponse != null){
                     if (orderResponse.getSuccess()){
-                        ArrayList<DataOrder> listOrder = orderResponse.getData();
+                        final ArrayList<DataOrder> listOrder = orderResponse.getData();
                         recyclerView.setHasFixedSize(true);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(layoutManager);
                         OrderAdapter orderAdapter = new OrderAdapter(getActivity(),listOrder);
                         recyclerView.setAdapter(orderAdapter);
+                        orderAdapter.setOrderListener(new OrderAdapter.OnOrderListener() {
+                            @Override
+                            public void onOrderClick(int position) {
+                                Intent intent = new Intent(getActivity(), OrderUserDetail.class);
+                                intent.putExtra("OrderDetail", (Serializable) listOrder.get(position));
+//                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
+                                startActivity(intent);
+
+                            }
+
+
+                        });
                     }
                     else {
                         Toast.makeText(getActivity(),"Chưa có đơn hàng nào!",Toast.LENGTH_SHORT).show();

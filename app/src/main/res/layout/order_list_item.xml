@@ -4,12 +4,12 @@
     android:id="@+id/order_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF">
-
+    android:background="@drawable/customborder"
+    >
     <ImageView
         android:id="@+id/order_item_img"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_weight="0"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/trasua" />
@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/order_item_name"
-        android:layout_width="260dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"

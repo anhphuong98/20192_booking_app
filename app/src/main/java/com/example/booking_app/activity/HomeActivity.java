@@ -5,6 +5,7 @@ package com.example.booking_app.activity;
 //import android.app.FragmentManager;
 //import android.app.FragmentTransaction;
 
+import androidx.annotation.ColorInt;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,18 +26,13 @@ import com.example.booking_app.fragment.FragmentOrder;
 import com.example.booking_app.fragment.FragmentUserInfo;
 
 
-public class HomeActivity extends AppCompatActivity {
-//    TextView  txtMenuHome, txtMenuHistoryOrder, txtMenuProfile;
-//    LinearLayout  linearMenuHistoryOrder,linearMenuHome, linearMenuProfile;
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView txtMenuHome, txtMenuHistoryOrder, txtMenuProfile;
+    LinearLayout linearMenuHistoryOrder,linearMenuHome, linearMenuProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        init();
-//        changeColorMenu(txtMenuHome);
-
-//        linearMenuHistoryOrder.setOnClickListener((View.OnClickListener) this);
-//        linearMenuHome.setOnClickListener((View.OnClickListener) this);
-//        linearMenuProfile.setOnClickListener((View.OnClickListener) this);
+        init();
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         );
@@ -51,29 +49,28 @@ public class HomeActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.frameContent, fragment);
             fragmentTransaction.commit();
         }
-
-//        Fragment fragment = new FragmentHome();
-//        fragmentTransaction.add(R.id.frameContent, fragment);
-//        fragmentTransaction.commit();
-
-
+        findViewById(R.id.linearMenuHome).setOnClickListener(this);
+        findViewById(R.id.linearMenuHistoryOrder).setOnClickListener(this);
+        findViewById(R.id.linearMenuProfile).setOnClickListener(this);
     }
 
-//    private void init() {
-//        linearMenuHistoryOrder = (LinearLayout)findViewById(R.id.linearMenuHistoryOrder);
-//        linearMenuHome = (LinearLayout)findViewById(R.id. linearMenuHome);
-//        linearMenuProfile = (LinearLayout)findViewById(R.id.linearMenuProfile);
-//        txtMenuHome = (TextView)findViewById(R.id.txtMenuHome);
-//        txtMenuHistoryOrder = (TextView)findViewById(R.id.txtMenuHistoryOrder);
-//        txtMenuProfile = (TextView)findViewById(R.id.txtMenuProfile);
-//    }
+    public void init() {
+        linearMenuHistoryOrder = (LinearLayout)findViewById(R.id.linearMenuHistoryOrder);
+        linearMenuHome = (LinearLayout)findViewById(R.id.linearMenuHome);
+        linearMenuProfile = (LinearLayout)findViewById(R.id.linearMenuProfile);
+        txtMenuHome = (TextView)findViewById(R.id.txtMenuHome);
+        txtMenuHistoryOrder = (TextView)findViewById(R.id.txtMenuHistoryOrder);
+        txtMenuProfile = (TextView)findViewById(R.id.txtMenuProfile);
+    }
 
-    public void AddFragment(View view) {
+    @Override
+    public void onClick(View v) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
-        switch (view.getId()){
+        switch (v.getId()){
             case R.id.linearMenuHome:
+
                 fragment = new FragmentHome();
                 break;
             case R.id.linearMenuProfile:

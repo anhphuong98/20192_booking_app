@@ -48,7 +48,7 @@ public class FragmentHome extends Fragment {
         super.onCreate(savedInstanceState);
         storeService = APIUtils.getStoreService();
     }
-    private void ActionViewFlipper(){
+    public void ActionViewFlipper(){
         ArrayList<String> advertisements = new ArrayList<>();
         advertisements.add("https://kenh14cdn.com/thumb_w/640/2018/10/4/photo1538615489250-1538615489250208741873.jpg");
         advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQwPhEhVwtFFRgEwRsfxqiFh1afcrSY_q7MPAseGKwlvSiR9OC&usqp=CAU");

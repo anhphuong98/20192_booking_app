@@ -5,18 +5,26 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderResponse {
+public class DataOrderResponse {
     @SerializedName("success")
-    Boolean success;
+    private boolean success;
 
     @SerializedName("data")
-    ArrayList<DataOrder> data;
+    private ArrayList<DataOrder> data;
+    public DataOrderResponse() {
 
-    public Boolean getSuccess() {
+    }
+
+    public DataOrderResponse(boolean success, ArrayList<DataOrder> data) {
+        this.success = success;
+        this.data = data;
+    }
+
+    public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 

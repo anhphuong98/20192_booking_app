@@ -5,7 +5,7 @@ public class APIUtils {
 
     }
 
-    public static String API_URL = "http://192.168.43.111:4000/api/";
+    public static String API_URL = "http://192.168.1.124:4000/api/";
 
 
     public static SOService getSOService() {

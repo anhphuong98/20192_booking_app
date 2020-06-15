@@ -22,7 +22,7 @@ import com.example.booking_app.adapter.OrderAdapter;
 import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.OrderService;
 import com.example.booking_app.models.order.DataOrder;
-import com.example.booking_app.models.order.OrderResponse;
+import com.example.booking_app.models.order.DataOrderResponse;
 
 
 import java.io.Serializable;
@@ -50,13 +50,13 @@ public class FragmentHistoryOrder extends Fragment {
         String token = tokenCache.getString("token","");
         int idUser = tokenCache.getInt("id",-1);
         OrderService orderService = APIUtils.getOrderService();
-        orderService.getOrderUser(token,idUser).enqueue(new Callback<OrderResponse>() {
+        orderService.getOrderUser(token,idUser).enqueue(new Callback<DataOrderResponse>() {
             @Override
-            public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
-                OrderResponse orderResponse = response.body();
-                if(orderResponse != null){
-                    if (orderResponse.getSuccess()){
-                        final ArrayList<DataOrder> listOrder = orderResponse.getData();
+            public void onResponse(Call<DataOrderResponse> call, Response<DataOrderResponse> response) {
+                DataOrderResponse dataOrderResponse = response.body();
+                if(dataOrderResponse != null){
+                    if (dataOrderResponse.isSuccess()){
+                        final ArrayList<DataOrder> listOrder = dataOrderResponse.getData();
                         recyclerView.setHasFixedSize(true);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(layoutManager);
@@ -67,7 +67,6 @@ public class FragmentHistoryOrder extends Fragment {
                             public void onOrderClick(int position) {
                                 Intent intent = new Intent(getActivity(), OrderUserDetail.class);
                                 intent.putExtra("OrderDetail", (Serializable) listOrder.get(position));
-//                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
 
                             }
@@ -86,7 +85,7 @@ public class FragmentHistoryOrder extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<OrderResponse> call, Throwable t) {
+            public void onFailure(Call<DataOrderResponse> call, Throwable t) {
                 Log.e("Loi", t.getMessage());
             }
         });

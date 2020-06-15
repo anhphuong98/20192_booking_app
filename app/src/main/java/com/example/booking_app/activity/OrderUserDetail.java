@@ -45,7 +45,6 @@ public class OrderUserDetail extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        orderService = APIUtils.getOrderById();
         setContentView(R.layout.order_detail_item);
         init();
         getOrderById();

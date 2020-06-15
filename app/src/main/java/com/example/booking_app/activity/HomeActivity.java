@@ -1,10 +1,4 @@
 package com.example.booking_app.activity;
-
-
-//import android.app.Fragment;
-//import android.app.FragmentManager;
-//import android.app.FragmentTransaction;
-
 import androidx.annotation.ColorInt;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -49,9 +43,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             fragmentTransaction.add(R.id.frameContent, fragment);
             fragmentTransaction.commit();
         }
+
         findViewById(R.id.linearMenuHome).setOnClickListener(this);
         findViewById(R.id.linearMenuHistoryOrder).setOnClickListener(this);
         findViewById(R.id.linearMenuProfile).setOnClickListener(this);
+
     }
 
     public void init() {

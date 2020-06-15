@@ -14,7 +14,9 @@ import com.example.booking_app.R;
 import com.example.booking_app.models.dish.CartDish;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ConfirmOrderAdapter extends RecyclerView.Adapter<ConfirmOrderAdapter.ConfirmorderHolder> {
     Context context;
@@ -39,8 +41,8 @@ public class ConfirmOrderAdapter extends RecyclerView.Adapter<ConfirmOrderAdapte
         Picasso.with(context).load(cartDish.getImage()).into(holder.itemimg);
         holder.name.setText(cartDish.getName());
         Double price = cartDish.getPrice()*cartDish.getQuantity();
-        holder.price.setText(price.toString());
-        holder.quantity.setText(cartDish.getQuantity());
+        holder.price.setText(convertMoney(price));
+        holder.quantity.setText(Integer.toString(cartDish.getQuantity()) + " x ");
     }
 
     @Override
@@ -58,5 +60,10 @@ public class ConfirmOrderAdapter extends RecyclerView.Adapter<ConfirmOrderAdapte
             name = (TextView) itemView.findViewById(R.id.order_item_name);
             price = (TextView) itemView.findViewById(R.id.order_item_price);
         }
+    }
+    public String convertMoney(Double money) {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currentMoney = NumberFormat.getCurrencyInstance(localeVN);
+        return currentMoney.format(money);
     }
 }

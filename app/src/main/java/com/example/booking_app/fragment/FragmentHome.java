@@ -48,7 +48,7 @@ public class FragmentHome extends Fragment {
         super.onCreate(savedInstanceState);
         storeService = APIUtils.getStoreService();
     }
-    private void ActionViewFlipper(){
+    public void ActionViewFlipper(){
         ArrayList<String> advertisements = new ArrayList<>();
         advertisements.add("https://kenh14cdn.com/thumb_w/640/2018/10/4/photo1538615489250-1538615489250208741873.jpg");
         advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQwPhEhVwtFFRgEwRsfxqiFh1afcrSY_q7MPAseGKwlvSiR9OC&usqp=CAU");
@@ -85,6 +85,7 @@ public class FragmentHome extends Fragment {
                         public void onStoreClick(int position) {
                             Intent intent = new Intent(getActivity(), Storedetail.class);
                             intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
+                            intent.putExtra("urlImageStore", (Serializable) listStore.get(position).getUrlImage());
 //                            Toast.makeText(HomeActivity.this,position+"===",Toast.LENGTH_SHORT).show();
                             startActivity(intent);
 

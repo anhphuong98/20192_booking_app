@@ -14,31 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/Noactionbar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ConfirmOrder"></activity>
+
         <activity android:name=".activity.changeUserInfo.ChangePassword" />
         <activity android:name=".activity.changeUserInfo.ChangePhone" />
         <activity android:name=".activity.changeUserInfo.ChangeAddress" />
         <activity android:name=".activity.changeUserInfo.ChangeName" /> <!-- <activity android:name=".activity.DetailCart" /> -->
         <activity android:name=".activity.DetailUserInfo" />
+
         <activity android:name=".activity.Storedetail"/>
         <activity android:name=".activity.DetailCart" />
+<<<<<<< HEAD
         <activity android:name=".activity.OrderUserDetail" />
 
+=======
+        <activity android:name=".activity.ConfirmOrder" />
+>>>>>>> master
         <activity android:name=".activity.HomeActivity" >
 
         </activity>
+<<<<<<< HEAD
 
         <activity android:name=".activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+=======
+        <activity android:name=".activity.Login"
+            >
+>>>>>>> master
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-        <activity android:name=".activity.Register" />
+        <activity android:name=".activity.Register"
+            />
         <activity android:name=".activity.MainActivity" />
 
 

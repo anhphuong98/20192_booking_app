@@ -2,7 +2,10 @@ package com.example.booking_app.fragment;
 
 //import android.app.Fragment;
 import androidx.fragment.app.Fragment;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.booking_app.activity.Login;
 import com.example.booking_app.activity.Storedetail;
 import com.example.booking_app.adapter.StoreAdapter;
 import com.example.booking_app.connection.APIUtils;
@@ -83,6 +87,12 @@ public class FragmentHome extends Fragment {
                     storeAdapter.setOnStoreListener(new StoreAdapter.OnStoreListener() {
                         @Override
                         public void onStoreClick(int position) {
+                            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("storeID", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("store_id", listStore.get(position).getId());
+                            editor.commit();
+
+
                             Intent intent = new Intent(getActivity(), Storedetail.class);
                             intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
                             intent.putExtra("urlImageStore", (Serializable) listStore.get(position).getUrlImage());

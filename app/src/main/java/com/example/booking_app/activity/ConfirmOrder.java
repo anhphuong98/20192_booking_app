@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.OrderService;
 import com.example.booking_app.fragment.FragmentCurrentOrder;
 import com.example.booking_app.fragment.FragmentHistoryOrder;
+import com.example.booking_app.fragment.FragmentHome;
 import com.example.booking_app.models.dish.CartDish;
 import com.example.booking_app.models.order.DishOrder;
 import com.example.booking_app.models.order.Order;
@@ -41,7 +44,6 @@ public class ConfirmOrder extends AppCompatActivity {
     ImageView userimg;
     TextView username, useraddress, store, subtotal, ship, discount, total;
     TextView subtotalprice, shipfee, discountprice, totalprice;
-    TextView edit;
     Button submit;
     RecyclerView listitem;
     BottomSheetDialog loadFindShipper;
@@ -54,22 +56,14 @@ public class ConfirmOrder extends AppCompatActivity {
     ArrayList<CartDish> cartDish = new ArrayList<CartDish>();
     ConfirmOrderAdapter confirmOrderAdapter;
     int accept = 0;
-
+    int store_id;
     CountDownTimer countDownTimer;
 
     ImageView backOrder;
 
-    private final String URL_SERVER = "http://192.168.0.103:4000";
+    private final String URL_SERVER = "http://192.168.43.22:4000";
     ArrayList<DishOrder> listDishOrder = new ArrayList<>();
-//    editor.putString("token", "Bearer "+ userResponse.getToken());
-//                        editor.putBoolean("signined", true);
-//                        editor.putInt("id", userResponse.getData().getId());
-//                        editor.putString("avatar", userResponse.getData().getUrl());
-//                        editor.putString("email", userResponse.getData().getEmail());
-//                        editor.putString("address", userResponse.getData().getAddress());
-//                        editor.putString("phoneNumber", userResponse.getData().getPhone());
-//                        editor.putString("password", userResponse.getData().getPassword());
-//                        editor.putString("name", userResponse.getData().getName());
+
     private Socket mSocket;
 
     {
@@ -89,12 +83,13 @@ public class ConfirmOrder extends AppCompatActivity {
         cancelOrder.setContentView(R.layout.cancel_order);
         loadFindShipper.setContentView(R.layout.loading_find_shipper);
         successOrder.setContentView(R.layout.success_order);
+        sharedPreferences = this.getSharedPreferences("storeID", MODE_PRIVATE);
+        store_id = sharedPreferences.getInt("store_id", -1);
         sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
         init();
         getItemOrder();
 
-        final Order order = new Order(sharedPreferences.getString("address", ""), "Nguyen Anh Phuong",372109881, "Mang nhanh len anh oi", 20000, 1, listDishOrder);
-        final String tokenAuth = sharedPreferences.getString("token", "");
+
         backOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +107,8 @@ public class ConfirmOrder extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
+                        Order order = new Order(sharedPreferences.getString("address", ""), sharedPreferences.getString("name", ""), Integer.parseInt(sharedPreferences.getString("phoneNumber", "")), "Thêm nhiều một chút", 20000, store_id, listDishOrder);
+                        String tokenAuth = sharedPreferences.getString("token", "");
                         postOrder(order, tokenAuth);
                     }
                 };
@@ -142,7 +139,6 @@ public class ConfirmOrder extends AppCompatActivity {
         totalprice = (TextView) findViewById(R.id.totalprice2);
 
         //button
-        edit = (TextView) findViewById(R.id.edit);
         submit = (Button) findViewById(R.id.submitorder);
 
         //list item order
@@ -163,13 +159,14 @@ public class ConfirmOrder extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getBundleExtra("Bundle");
         ArrayList<CartDish> cart = (ArrayList<CartDish>) bundle.getSerializable("cart");
-        System.out.println("Ngan abc gi do: " + cart.get(0).getName());
 
         Double price = Double.valueOf(0);
         for (int i =0; i < cart.size(); i++){
             CartDish item = cart.get(i);
             cartDish.add(item);
             price += item.getPrice()*item.getQuantity();
+            DishOrder dishOrder = new DishOrder(item.getId(), item.getQuantity(), (float) (item.getQuantity() * item.getPrice()));
+            listDishOrder.add(dishOrder);
         }
         shipfee.setText(confirmOrderAdapter.convertMoney(20000.0));
         Double ttpr = price + 20000;
@@ -179,10 +176,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
 
 
-    public void postOrder(final Order order, String auth) {
-        for(int i=0; i < cartDish.size(); i++){
-            listDishOrder.add(new DishOrder(cartDish.get(i).getId(), cartDish.get(i).getQuantity(), (float) (cartDish.get(i).getQuantity()*cartDish.get(i).getPrice())));
-        }
+    public void postOrder(Order order, String auth) {
         orderService = APIUtils.getOrderService();
         Call<OrderResponse> postOrderResponse = orderService.postOrder(order, auth);
         postOrderResponse.enqueue(new Callback<OrderResponse>() {
@@ -221,8 +215,9 @@ public class ConfirmOrder extends AppCompatActivity {
                     clickSuccessOrder.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(ConfirmOrder.this, FragmentHistoryOrder.class);
-                            startActivity(intent);
+                            Fragment fragment = new FragmentHistoryOrder();
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                         }
                     });
                 };

@@ -16,6 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:gravity="center"
                 >
 
                 <TextView
@@ -27,30 +28,14 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/addressstore"
-                    android:layout_width="match_parent"
-                    android:layout_height="38dp"
-                    android:text="Địa chỉ cửa hàng"
-                    android:textColor="@color/colorBlack"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/star_ap"/>
-                    <TextView
-                        android:layout_marginLeft="6dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="3"
-                        android:textColor="#000000"
-                        ></TextView>
-                </LinearLayout>
+        <TextView
+            android:id="@+id/addressstore"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:text="Địa chỉ cửa hàng"
+            android:textColor="@color/colorBlack" />
 
-            </LinearLayout>
+    </LinearLayout>
     <!--    </androidx.cardview.widget.CardView>-->
 
 

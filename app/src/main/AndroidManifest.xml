@@ -23,21 +23,26 @@
 
         <activity android:name=".activity.Storedetail"/>
         <activity android:name=".activity.DetailCart" />
+
+        <activity android:name=".activity.OrderUserDetail" />
+
+
         <activity android:name=".activity.ConfirmOrder" />
+
         <activity android:name=".activity.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Login"
-            >
+
+
+        <activity android:name=".activity.Login">
 
         </activity>
-        <activity android:name=".activity.Register"
-            />
+        <activity android:name=".activity.Register" />
         <activity android:name=".activity.MainActivity" />
+
 
     </application>
 

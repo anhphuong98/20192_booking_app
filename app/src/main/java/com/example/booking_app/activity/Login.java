@@ -67,8 +67,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         switch (v.getId()){
             case R.id.login:
-                pg.setVisibility(View.VISIBLE);
-                login();
+                boolean isnotempty = validate();
+                if(isnotempty) {
+                    pg.setVisibility(View.VISIBLE);
+                    login();
+                }
                 break;
             case R.id.login2:
                 Intent intent = new Intent(Login.this, Register.class);
@@ -110,7 +113,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         editor.commit();
 
                         if(receiveintent.getStringExtra("fromPage") != null && receiveintent.getStringExtra("fromPage").equals("confirmorder")){
-                            pg.setVisibility(View.INVISIBLE);
                             onBackPressed();
                         } else {
                             pg.setVisibility(View.INVISIBLE);
@@ -121,6 +123,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
                         finish();
                     } else {
+                        pg.setVisibility(View.INVISIBLE);
                         Toast.makeText(Login.this, "Email or password is not valid", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -1,5 +1,6 @@
 package com.example.booking_app.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -61,7 +63,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
     ImageView backOrder;
 
-    private final String URL_SERVER = "http://192.168.43.22:4000";
+    private final String URL_SERVER = "http://192.168.0.103:4000";
     ArrayList<DishOrder> listDishOrder = new ArrayList<>();
 
     private Socket mSocket;
@@ -115,6 +117,8 @@ public class ConfirmOrder extends AppCompatActivity {
                 countDownTimer.start();
             }
         });
+
+
 
     }
     public void init(){
@@ -215,9 +219,9 @@ public class ConfirmOrder extends AppCompatActivity {
                     clickSuccessOrder.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Fragment fragment = new FragmentHistoryOrder();
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+                            sharedPreferences.edit().putBoolean("check", true).commit();
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
                         }
                     });
                 };
@@ -234,9 +238,10 @@ public class ConfirmOrder extends AppCompatActivity {
                     JSONObject data = (JSONObject) args[0];
                     accept = data.optInt("accept");
                     cancelOrder.show();
+                    loadFindShipper.dismiss();
+                    clickOkCancelOrder(cancelOrder);
                 };
             });
-
         };
     };
 

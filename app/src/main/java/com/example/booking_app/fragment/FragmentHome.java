@@ -53,11 +53,11 @@ public class FragmentHome extends Fragment {
         storeService = APIUtils.getStoreService();
     }
     public void ActionViewFlipper(){
-        ArrayList<String> advertisements = new ArrayList<>();
-        advertisements.add("https://kenh14cdn.com/thumb_w/640/2018/10/4/photo1538615489250-1538615489250208741873.jpg");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQwPhEhVwtFFRgEwRsfxqiFh1afcrSY_q7MPAseGKwlvSiR9OC&usqp=CAU");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0E-BXHwVjyj3HeEA_ytk0iGJbcVdDXbwaO5TrDVBomMDuN-mp&usqp=CAU");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbF_eeJ1mDTjX6dfhdoCcSJpwkeln_Z_j1_mJ29y_jYeyHfjkD&usqp=CAU");
+        ArrayList<Integer> advertisements = new ArrayList<>();
+        advertisements.add(R.drawable.trangchu1);
+        advertisements.add(R.drawable.trangchu2);
+        advertisements.add(R.drawable.trangchu3);
+        advertisements.add(R.drawable.trangchu4);
         for (int i = 0; i< advertisements.size(); i++) {
             ImageView imageView = new ImageView(getActivity());
 

@@ -45,6 +45,7 @@ public class FragmentHome extends Fragment {
     StoreService storeService;
     SearchView searchView;
     ViewFlipper viewFlipper;
+    StoreAdapter storeAdapter;
     ArrayList<DataStore> listDataStore = new ArrayList<DataStore>();
 
     @Override
@@ -82,7 +83,7 @@ public class FragmentHome extends Fragment {
                     recyclerView.setHasFixedSize(true);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     recyclerView.setLayoutManager(layoutManager);
-                    StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listStore);
+                    storeAdapter = new StoreAdapter(getActivity(), listStore);
                     recyclerView.setAdapter(storeAdapter);
                     storeAdapter.setOnStoreListener(new StoreAdapter.OnStoreListener() {
                         @Override
@@ -114,6 +115,22 @@ public class FragmentHome extends Fragment {
 
         });
     }
+    public boolean searchStore(){
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                storeAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+
+    }
             @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -123,6 +140,7 @@ public class FragmentHome extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.listStore);
         ActionViewFlipper();
         getAllStoreHome();
+        searchStore();
         return view;
     }
 }

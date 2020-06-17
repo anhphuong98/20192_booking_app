@@ -58,7 +58,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
     ImageView backOrder;
 
-    private final String URL_SERVER = "http://172.16.10.141:4000";
+    private final String URL_SERVER = "http://192.168.43.130:4000";
     ArrayList<DishOrder> listDishOrder = new ArrayList<>();
 
     private Socket mSocket;

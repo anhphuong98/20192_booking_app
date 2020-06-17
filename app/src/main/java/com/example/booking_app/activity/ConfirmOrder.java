@@ -1,6 +1,5 @@
 package com.example.booking_app.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,11 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,9 +18,6 @@ import com.example.booking_app.R;
 import com.example.booking_app.adapter.ConfirmOrderAdapter;
 import com.example.booking_app.connection.APIUtils;
 import com.example.booking_app.connection.OrderService;
-import com.example.booking_app.fragment.FragmentCurrentOrder;
-import com.example.booking_app.fragment.FragmentHistoryOrder;
-import com.example.booking_app.fragment.FragmentHome;
 import com.example.booking_app.models.dish.CartDish;
 import com.example.booking_app.models.order.DishOrder;
 import com.example.booking_app.models.order.Order;
@@ -34,7 +27,9 @@ import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONObject;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
@@ -63,7 +58,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
     ImageView backOrder;
 
-    private final String URL_SERVER = "http://192.168.0.103:4000";
+    private final String URL_SERVER = "http://192.168.43.130:4000";
     ArrayList<DishOrder> listDishOrder = new ArrayList<>();
 
     private Socket mSocket;

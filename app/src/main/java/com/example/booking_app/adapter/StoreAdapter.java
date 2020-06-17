@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -15,12 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booking_app.R;
 import com.example.booking_app.models.store.DataStore;
-import com.example.booking_app.models.store.StoreResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import retrofit2.Callback;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreHolder> implements Filterable {
     Context context;

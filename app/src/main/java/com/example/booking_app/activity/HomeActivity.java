@@ -1,9 +1,4 @@
 package com.example.booking_app.activity;
-import androidx.annotation.ColorInt;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +7,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.booking_app.R;
-import com.example.booking_app.fragment.FragmentHistoryOrder;
 import com.example.booking_app.fragment.FragmentHome;
 import com.example.booking_app.fragment.FragmentOrder;
 import com.example.booking_app.fragment.FragmentUserInfo;
@@ -79,7 +75,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.linearMenuHome:
-
                 fragment = new FragmentHome();
                 break;
             case R.id.linearMenuProfile:

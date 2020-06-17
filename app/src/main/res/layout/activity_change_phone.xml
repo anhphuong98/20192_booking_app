@@ -33,16 +33,16 @@
             android:layout_height="match_parent"
             android:layout_weight="19"
             android:gravity="center"
-            android:textSize="20sp"
             android:text="Đổi số điện thoại" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout14"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="28dp"
         android:orientation="horizontal"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,14 +56,16 @@
             android:gravity="center"
             android:text="Số điện thoại"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            />
 
         <EditText
             android:id="@+id/editPhone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:textSize="16sp"
+            android:background="@drawable/inputstyle"
             android:textColor="#000000"
             android:inputType="textPersonName"
             android:text="nap" />

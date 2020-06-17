@@ -32,7 +32,6 @@
         android:weightSum="3"
         >
         <LinearLayout
-            android:onClick="AddFragment"
             android:id="@+id/linearMenuHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -59,7 +58,6 @@
 
 
         <LinearLayout
-            android:onClick="AddFragment"
             android:id="@+id/linearMenuHistoryOrder"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -83,7 +81,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:onClick="AddFragment"
             android:id="@+id/linearMenuProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"

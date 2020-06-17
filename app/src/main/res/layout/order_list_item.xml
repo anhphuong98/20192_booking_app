@@ -27,6 +27,7 @@
 
     <TextView
         android:id="@+id/order_item_name"
+
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

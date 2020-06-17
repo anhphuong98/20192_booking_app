@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +35,7 @@ import retrofit2.Response;
 
 public class Storedetail extends AppCompatActivity {
 
-    ConstraintLayout storedetail;
+//    ConstraintLayout storedetail;
     ImageView storeimg, additem, cartdishimg, x_icon;
     DishService dishService;
     TextView stname, steva, stopcltime, staddress, stphone, quantityincart, delete_cart;
@@ -147,7 +146,7 @@ public class Storedetail extends AppCompatActivity {
     public void init(){
         storeimg = (ImageView) findViewById(R.id.storeavt);
         stname = (TextView) findViewById(R.id.stname);
-        steva = (TextView) findViewById(R.id.evaluation);
+//        steva = (TextView) findViewById(R.id.evaluation);
         stopcltime = (TextView) findViewById(R.id.opcltime);
         additem = (ImageView) findViewById(R.id.additem);
         staddress = (TextView) findViewById(R.id.staddress);
@@ -174,7 +173,7 @@ public class Storedetail extends AppCompatActivity {
         Call<StoreDishResponse> storeDishResponseCall = dishService.getStoreDish(store.getId());
         Picasso.with(getApplicationContext()).load(store.getUrlImage()).into(storeimg);
         stname.setText(store.getName() + " - ");
-        steva.setText("4");
+//        steva.setText("4");
         String opcl = "Open: " + store.getOpenTime() +" - " + store.getCloseTime();
         stopcltime.setText(opcl);
         staddress.setText("Address: " + store.getAddress());
@@ -259,8 +258,6 @@ public class Storedetail extends AppCompatActivity {
     }
 
     public void confirmOrder(){
-
-
             confirmorder.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if(sharedPreferences.getBoolean("signined",false)){

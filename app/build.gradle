@@ -25,7 +25,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:support-v13:+'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -46,16 +46,16 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
     //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha03'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
 
     //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
 
     implementation files('libs/jbcrypt-0.3m.jar')

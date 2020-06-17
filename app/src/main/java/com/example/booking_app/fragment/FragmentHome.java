@@ -2,7 +2,10 @@ package com.example.booking_app.fragment;
 
 //import android.app.Fragment;
 import androidx.fragment.app.Fragment;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.booking_app.activity.Login;
 import com.example.booking_app.activity.Storedetail;
 import com.example.booking_app.adapter.StoreAdapter;
 import com.example.booking_app.connection.APIUtils;
@@ -48,12 +52,12 @@ public class FragmentHome extends Fragment {
         super.onCreate(savedInstanceState);
         storeService = APIUtils.getStoreService();
     }
-    private void ActionViewFlipper(){
-        ArrayList<String> advertisements = new ArrayList<>();
-        advertisements.add("https://kenh14cdn.com/thumb_w/640/2018/10/4/photo1538615489250-1538615489250208741873.jpg");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQwPhEhVwtFFRgEwRsfxqiFh1afcrSY_q7MPAseGKwlvSiR9OC&usqp=CAU");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0E-BXHwVjyj3HeEA_ytk0iGJbcVdDXbwaO5TrDVBomMDuN-mp&usqp=CAU");
-        advertisements.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTbF_eeJ1mDTjX6dfhdoCcSJpwkeln_Z_j1_mJ29y_jYeyHfjkD&usqp=CAU");
+    public void ActionViewFlipper(){
+        ArrayList<Integer> advertisements = new ArrayList<>();
+        advertisements.add(R.drawable.trangchu1);
+        advertisements.add(R.drawable.trangchu2);
+        advertisements.add(R.drawable.trangchu3);
+        advertisements.add(R.drawable.trangchu4);
         for (int i = 0; i< advertisements.size(); i++) {
             ImageView imageView = new ImageView(getActivity());
 
@@ -83,6 +87,12 @@ public class FragmentHome extends Fragment {
                     storeAdapter.setOnStoreListener(new StoreAdapter.OnStoreListener() {
                         @Override
                         public void onStoreClick(int position) {
+                            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("storeID", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("store_id", listStore.get(position).getId());
+                            editor.commit();
+
+
                             Intent intent = new Intent(getActivity(), Storedetail.class);
                             intent.putExtra("StoreDetail", (Serializable) listStore.get(position));
                             intent.putExtra("urlImageStore", (Serializable) listStore.get(position).getUrlImage());

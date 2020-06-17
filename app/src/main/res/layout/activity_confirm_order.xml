@@ -35,9 +35,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/back"
-            android:layout_width="11dp"
-            android:layout_height="29dp"
+            android:id="@+id/backOrder"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_weight="0"
             app:srcCompat="@drawable/back" />
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:text="ORDER"
             android:textColor="#000000"
-            android:textSize="20dp" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -102,16 +102,9 @@
                 android:text="D3, Ta Quang Buu, Dong Tam, Hai Ba Trung, Ha Noi, Viet Nam"
                 android:textColor="#000000" />
 
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:layout_marginTop="10dp"
-            android:text="Edit"
-            android:textColor="#006AAF" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

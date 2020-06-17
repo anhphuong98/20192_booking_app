@@ -3,6 +3,7 @@ package com.example.booking_app.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ import com.example.booking_app.models.order.OrderResponse;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -39,27 +41,26 @@ public class ConfirmOrder extends AppCompatActivity {
     ImageView userimg;
     TextView username, useraddress, store, subtotal, ship, discount, total;
     TextView subtotalprice, shipfee, discountprice, totalprice;
-    TextView edit;
     Button submit;
     RecyclerView listitem;
+    BottomSheetDialog loadFindShipper;
+    BottomSheetDialog cancelOrder;
+    BottomSheetDialog successOrder;
 
     OrderService orderService;
     SharedPreferences sharedPreferences;
 
     ArrayList<CartDish> cartDish = new ArrayList<CartDish>();
     ConfirmOrderAdapter confirmOrderAdapter;
-    ArrayList<DishOrder> listDishOrder = new ArrayList<>();
-//    editor.putString("token", "Bearer "+ userResponse.getToken());
-//                        editor.putBoolean("signined", true);
-//                        editor.putInt("id", userResponse.getData().getId());
-//                        editor.putString("avatar", userResponse.getData().getUrl());
-//                        editor.putString("email", userResponse.getData().getEmail());
-//                        editor.putString("address", userResponse.getData().getAddress());
-//                        editor.putString("phoneNumber", userResponse.getData().getPhone());
-//                        editor.putString("password", userResponse.getData().getPassword());
-//                        editor.putString("name", userResponse.getData().getName());
+    int accept = 0;
+    int store_id;
+    CountDownTimer countDownTimer;
 
-    private final String URL_SERVER = "http://192.168.1.186:4000";
+    ImageView backOrder;
+
+    private final String URL_SERVER = "http://172.16.10.141:4000";
+    ArrayList<DishOrder> listDishOrder = new ArrayList<>();
+
     private Socket mSocket;
 
     {
@@ -73,20 +74,46 @@ public class ConfirmOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
+        loadFindShipper = new BottomSheetDialog(this);
+        cancelOrder = new BottomSheetDialog(this);
+        successOrder = new BottomSheetDialog(this);
+        cancelOrder.setContentView(R.layout.cancel_order);
+        loadFindShipper.setContentView(R.layout.loading_find_shipper);
+        successOrder.setContentView(R.layout.success_order);
+        sharedPreferences = this.getSharedPreferences("storeID", MODE_PRIVATE);
+        store_id = sharedPreferences.getInt("store_id", -1);
         sharedPreferences = this.getSharedPreferences("userinfo", MODE_PRIVATE);
-
         init();
         getItemOrder();
 
-        final Order order = new Order(sharedPreferences.getString("address", ""), "Nguyen Anh Phuong",372109881, "Mang nhanh len anh oi", 20000, 1, listDishOrder);
-        final String tokenAuth = sharedPreferences.getString("token", "");
 
+        backOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postOrder(order, tokenAuth);
+                countDownTimer = new CountDownTimer(2000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        loadFindShipper.show();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Order order = new Order(sharedPreferences.getString("address", ""), sharedPreferences.getString("name", ""), Integer.parseInt(sharedPreferences.getString("phoneNumber", "")), "Thêm nhiều một chút", 20000, store_id, listDishOrder);
+                        String tokenAuth = sharedPreferences.getString("token", "");
+                        postOrder(order, tokenAuth);
+                    }
+                };
+                countDownTimer.start();
             }
         });
+
+
 
     }
     public void init(){
@@ -111,11 +138,15 @@ public class ConfirmOrder extends AppCompatActivity {
         totalprice = (TextView) findViewById(R.id.totalprice2);
 
         //button
-        edit = (TextView) findViewById(R.id.edit);
         submit = (Button) findViewById(R.id.submitorder);
 
         //list item order
         listitem = (RecyclerView) findViewById(R.id.list_item_order);
+
+        backOrder = (ImageView) findViewById(R.id.backOrder);
+
+        //
+
 
     }
 
@@ -127,13 +158,14 @@ public class ConfirmOrder extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getBundleExtra("Bundle");
         ArrayList<CartDish> cart = (ArrayList<CartDish>) bundle.getSerializable("cart");
-        System.out.println("Ngan abc gi do: " + cart.get(0).getName());
 
         Double price = Double.valueOf(0);
         for (int i =0; i < cart.size(); i++){
             CartDish item = cart.get(i);
             cartDish.add(item);
             price += item.getPrice()*item.getQuantity();
+            DishOrder dishOrder = new DishOrder(item.getId(), item.getQuantity(), (float) (item.getQuantity() * item.getPrice()));
+            listDishOrder.add(dishOrder);
         }
         shipfee.setText(confirmOrderAdapter.convertMoney(20000.0));
         Double ttpr = price + 20000;
@@ -144,20 +176,22 @@ public class ConfirmOrder extends AppCompatActivity {
 
 
     public void postOrder(Order order, String auth) {
-        for(int i=0; i < cartDish.size(); i++){
-            listDishOrder.add(new DishOrder(cartDish.get(i).getId(), cartDish.get(i).getQuantity(), (float) (cartDish.get(i).getQuantity()*cartDish.get(i).getPrice())));
-        }
         orderService = APIUtils.getOrderService();
         Call<OrderResponse> postOrderResponse = orderService.postOrder(order, auth);
         postOrderResponse.enqueue(new Callback<OrderResponse>() {
             @Override
             public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
                 OrderResponse orderResponse = response.body();
-                int order_id = orderResponse.getOrder_id();
-                mSocket.connect();
-                mSocket.emit("client-send-order",  order_id);
-                mSocket.on("shipper-receive-order-" + order_id, onNewMessage);
-                mSocket.on("server-cancel-order-" + order_id, onNewMessage1);
+                if(orderResponse.isSuccess()) {
+                    int order_id = orderResponse.getOrder_id();
+                    mSocket.connect();
+                    mSocket.emit("client-send-order",  order_id);
+                    mSocket.on("shipper-receive-order-" + order_id, onNewMessage);
+                    mSocket.on("server-cancel-order-" + order_id, onNewMessage1);
+                }else{
+                    cancelOrder.show();
+                    clickOkCancelOrder(cancelOrder);
+                }
             }
 
             @Override
@@ -173,10 +207,18 @@ public class ConfirmOrder extends AppCompatActivity {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String message;
-                    message = data.optString("except");
-                    System.out.println("Nhan roi" + message);
-                    System.out.println(args[0]);
+                    accept = data.optInt("accept");
+                    successOrder.show();
+                    loadFindShipper.dismiss();
+                    Button clickSuccessOrder = (Button) successOrder.findViewById(R.id.success_order1);
+                    clickSuccessOrder.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            sharedPreferences.edit().putBoolean("check", true).commit();
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 };
             });
         };
@@ -189,12 +231,23 @@ public class ConfirmOrder extends AppCompatActivity {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String message;
-                    message = data.optString("except");
-                    System.out.println("Huy roi" + message);
-                    System.out.println(args[0]);
+                    accept = data.optInt("accept");
+                    cancelOrder.show();
+                    loadFindShipper.dismiss();
+                    clickOkCancelOrder(cancelOrder);
                 };
             });
         };
     };
+
+    public void clickOkCancelOrder(final BottomSheetDialog bottomSheetDialog) {
+        Button okCancel = (Button) bottomSheetDialog.findViewById(R.id.cancel_order1);
+        okCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+                loadFindShipper.dismiss();
+            }
+        });
+    }
 }

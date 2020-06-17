@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface SOService {
+public interface    SOService {
     @POST("user/login")
     @FormUrlEncoded
     Call<UserResponse> logIn(@Field("email") String email, @Field("password") String password);

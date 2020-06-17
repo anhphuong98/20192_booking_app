@@ -53,12 +53,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public void onClick(View v) {
             changeDishCartQuantity.changeQuantity(getPosition(), v);
             int n = Integer.parseInt(cart_dish_quantity.getText().toString());
+            String str = cart_dish_price.getText().toString();
+            str = str.substring(0, str.length()-2);
+            double price = Double.parseDouble(str)*1000/n; 
             switch (v.getId()){
                 case R.id.cart_dish_plus:
                     cart_dish_quantity.setText(String.valueOf(n+1));
+                    double newprice = Double.parseDouble(cart_dish_quantity.getText().toString())*price;
+                    System.out.println("aaaaaaaaaaaaaaaaaa" + price);
+                    cart_dish_price.setText(convertMoney(newprice));
                     break;
                 case R.id.cart_dish_sub:
                     cart_dish_quantity.setText(String.valueOf(n-1));
+                    break;
+                default:
+                    break;
             }
 
         }

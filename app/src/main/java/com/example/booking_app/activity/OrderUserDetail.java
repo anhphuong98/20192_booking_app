@@ -90,7 +90,7 @@ public class OrderUserDetail extends AppCompatActivity {
         String token = tokenCache.getString("token","");
         final DataOrder order = (DataOrder)  getIntent().getSerializableExtra("OrderDetail");
         nameStore.setText(order.getStore().getName());
-        addressCustom.setText(order.getStore().getAddress());
+        addressStore.setText(order.getStore().getAddress());
         String infoCustom = order.getName_recieve() + " - 0" +(int)(order.getPhone_recieve());
         nameCustom.setText(infoCustom.toString());
         addressCustom.setText(order.getAddress());
